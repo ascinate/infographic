@@ -1,121 +1,230 @@
-import React from 'react'
-import Footer from './components/Footer'
-import Link from 'next/link'
-import SVGHero from './components/SVGHero'
+'use client';
+import { useEffect, useRef, useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-function page() {
+export default function Home() {
+  useEffect(() => {
+    import('bootstrap/dist/js/bootstrap.bundle.min.js');
+  }, []);
+
+  const [svgColor, setSvgColor] = useState('#576FF8');
+  const [selectedSVG, setSelectedSVG] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
+  const svgRef = useRef(null);
+  
+
+  
+
+
+  const svgList = [
+    {
+      id: 1,
+      name: "Construction workers",
+      svg: (
+        <svg width="94" height="94" viewBox="0 0 799.987 484.11" class="injected-svg" role="img" artist="Katerina Limpitsouni" copyright="unDraw" scrapped="true" source="https://undraw.co/"><g transform="translate(-667.431 -409.309)"><path d="M674.49,553.994v10.488l-16.21-.953.226-8.638Z" transform="translate(255.02 219.218)" fill="#ed9da0"></path><path d="M908.85,728.695c-.954,5.721.954,5.721-14.3,7.628S883.1,725.834,883.1,725.834a80.124,80.124,0,0,1,3.814-17.163c2.861-7.628,18.117,1.907,18.117,1.907S909.8,722.974,908.85,728.695Z" transform="translate(25.428 73.123)" fill="#090814"></path><path d="M658.28,553.994v10.488l16.209-.953-.226-8.638Z" transform="translate(177.135 218.598)" fill="#ed9da0"></path><path d="M882.806,728.695c.953,5.721-.954,5.721,14.3,7.628s11.442-10.488,11.442-10.488a80.134,80.134,0,0,0-3.814-17.163c-2.86-7.628-18.116,1.907-18.116,1.907S881.853,722.974,882.806,728.695Z" transform="translate(-52.159 72.503)" fill="#090814"></path><path d="M26.479,0H0V14.605H29.3Z" transform="translate(1246.539 537.065)" fill="#9f616a"></path><g transform="translate(1234.452 850.894)"><rect width="18.667" height="26.484" transform="translate(36.399)" fill="#9f616a"></rect><path d="M504.74,592.216c8.193,0,20.155-.856,20.245-.865,3.2.285,19.175,1.542,19.969-2.113a15.7,15.7,0,0,0-.5-7.35c-1.542-15.27-2.113-15.448-2.452-15.547-.543-.16-2.13.6-4.707,2.255l-.16.106-.035.188c-.045.232-1.181,5.839-6.6,4.988-3.708-.588-4.911-1.408-5.295-1.81a2.281,2.281,0,0,0,.98-.82,2.868,2.868,0,0,0,.2-2.389,37.791,37.791,0,0,0-2.871-6.445l-.24-.428L502.068,576.3l-13.1,3.745a3.354,3.354,0,0,0-2.184,1.935h0a3.38,3.38,0,0,0,.856,3.816c2.38,2.139,7.114,5.8,12.075,6.258,1.319.131,3.066.169,5.028.169h0Z" transform="translate(-486.517 -549.701)" fill="#2f2e43"></path></g><g transform="translate(1182.535 850.894)"><rect width="18.667" height="26.484" transform="translate(36.399)" fill="#9f616a"></rect><path d="M504.74,592.216c8.193,0,20.155-.856,20.245-.865,3.2.285,19.175,1.542,19.969-2.113a15.7,15.7,0,0,0-.5-7.35c-1.542-15.27-2.113-15.448-2.452-15.547-.543-.16-2.13.6-4.707,2.255l-.16.106-.035.188c-.045.232-1.181,5.839-6.6,4.988-3.708-.588-4.911-1.408-5.295-1.81a2.281,2.281,0,0,0,.98-.82,2.868,2.868,0,0,0,.2-2.389,37.791,37.791,0,0,0-2.871-6.445l-.24-.428L502.068,576.3l-13.1,3.745a3.354,3.354,0,0,0-2.184,1.935h0a3.38,3.38,0,0,0,.856,3.816c2.38,2.139,7.114,5.8,12.075,6.258,1.319.131,3.066.169,5.028.169h0Z" transform="translate(-486.517 -549.701)" fill="#2f2e43"></path></g><ellipse cx="150.834" cy="35.194" rx="150.834" ry="35.194" transform="translate(884.19 809.025)" fill="#f2f2f2"></ellipse><path d="M202.728,600.948H150.509V585.1c16.5-11.483,31.121-10.485,50.354.933Z" transform="translate(711.62 -97.46)" fill={svgColor}></path><path d="M226.567,766.314a4.216,4.216,0,0,1-4.1-3.285L194.135,639.441a1.359,1.359,0,0,0-1.365-1.095h-.007a1.359,1.359,0,0,0-1.362,1.108L165.381,762.21a4.216,4.216,0,0,1-4.105,3.326h-12.4a4.2,4.2,0,0,1-4.189-4.444L153.924,605.5l3.715-1.1h.07l72.973.638,15.542,155.417a4.194,4.194,0,0,1-3.838,4.589L226.9,766.3Q226.734,766.315,226.567,766.314Z" transform="translate(688.161 13.087)" fill="#2f2e41"></path><path d="M2.378.456l20.3-1.187,2,15.792H0Z" transform="translate(872.257 471.741)" fill="#ed9da0"></path><path d="M174.807,730.926a39.525,39.525,0,0,1-11.868-1.67,26.2,26.2,0,0,1-15.888-13.4,4.2,4.2,0,0,1-.312-3.127c2.526-8.621,14.732-53.431,6.944-89.054a37.751,37.751,0,0,1,5.367-29.013A37.278,37.278,0,0,1,183.225,578.4h0c1.292-.252,2.59-.459,3.86-.615a37.143,37.143,0,0,1,30.08,9.9,38.064,38.064,0,0,1,11.95,30.175L223.13,713.9a4.158,4.158,0,0,1-2.236,3.453C214,720.965,193.293,730.926,174.807,730.926Z" transform="translate(695.757 -95.276)" fill="#3f3d56"></path><path d="M190.054,722.722a4.2,4.2,0,0,1-1.68-.355L144.92,703.4a4.168,4.168,0,0,1-2.381-4.921l28.767-108.669a15.727,15.727,0,0,1,19.527-11.1l11.5,3.283-8.1,136.775a4.208,4.208,0,0,1-2,3.328,4.162,4.162,0,0,1-2.182.624Z" transform="translate(678.934 -92.839)" fill={svgColor}></path><path d="M215.767,698.481l-1.912-7.208-2.769-10.481-1.334-5.026-2.769-10.453L187,589.812a15.71,15.71,0,0,0-19.526-11.1L155.977,582l5.7,96.2.588,10.043.373,6.331v.009l.6,9.987.84,14.2a4.187,4.187,0,0,0,5.865,3.6L213.389,703.4a4.164,4.164,0,0,0,2.378-4.923Z" transform="translate(733.643 -92.842)" fill={svgColor}></path><ellipse cx="22.903" cy="22.902" rx="22.903" ry="22.902" transform="translate(861.693 429.272)" fill="#ed9da0"></ellipse><path d="M129.088,381.717,81.6,394.191l-.588-10.041,45.31-12.891Z" transform="translate(814.304 201.211)" fill="#ccc"></path><path d="M132.421,384.821,81.8,398.119l-.6-9.99v-.01l48.453-13.781Z" transform="translate(815.072 213.614)" fill="#ccc"></path><path d="M201.89,582.371a28.12,28.12,0,0,0-30.821-17.329l7.221,5.835c-8.972.3-18.416-.34-24.822,5.949,2.039-.056,4.712,4.305,6.752,4.249a10.7,10.7,0,0,0-8.954,6.176,17.592,17.592,0,0,0-1.039,11.187,130,130,0,0,0,8.044,15.982c-.266-9.11,17.67-30.841,26.428-28.572a24.035,24.035,0,0,0-11.1,8.425,32.55,32.55,0,0,1,19.3-3.158,13.658,13.658,0,0,0,4.6.257,5.618,5.618,0,0,0,3.331-8.979Z" transform="translate(708.576 -147.055)" fill="#2f2e41"></path><path d="M114.748,385.736l-.588,9.854L67.582,381.719l2.73-10.317Z" transform="translate(760.232 201.788)" fill="#ccc"></path><path d="M117.036,389.793l-47.528-15.34L66.773,384.8l49.685,14.8Z" transform="translate(756.973 214.077)" fill="#ccc"></path><path d="M153.741,673.721a10.017,10.017,0,0,0,6.568-13.885l22.344-70.145-15.844-3.318-20.485,68.772a10.071,10.071,0,0,0,7.418,18.576Z" transform="translate(673.569 -59.545)" fill="#ed9da0"></path><path d="M168.028,580.173h0c4.55.464,7.109,5.58,5.977,11.949l-5.428,30.565c-.407,2.291-2.293,4.105-3.86,3.714l-18.361-4.589c-1.413-.353-1.933-2.361-1.133-4.369l11.023-27.651A13.306,13.306,0,0,1,168.028,580.173Z" transform="translate(688.816 -84.513)" fill="#3f3d56"></path><path d="M163.1,633.752a9.826,9.826,0,0,1,1.517.3l35.1-30.1L197.672,592.9l16.265-5.275,5.533,19.2a7.46,7.46,0,0,1-3.179,8.37l-44.458,28.133a9.788,9.788,0,1,1-8.729-9.575Z" transform="translate(718.665 -54.5)" fill="#ed9da0"></path><path d="M168.073,580.9h0c4.86-1.36,9.716,2.339,11.343,8.64l7.808,30.24c.585,2.267-.552,4.676-2.327,4.931L164.1,627.7c-1.6.23-3.011-1.411-3.069-3.573l-.808-29.758a13.09,13.09,0,0,1,7.854-13.473Z" transform="translate(750.406 -82.716)" fill="#3f3d56"></path><path d="M243.773,743.487a12.036,12.036,0,0,1-2.311-18.309l-9.043-128.339,26.051,2.527.716,125.683a12.1,12.1,0,0,1-15.412,18.439Z" transform="translate(1041.537 -17.387)" fill="#a0616a"></path><path d="M236.806,647.92a5.02,5.02,0,0,1-2.082-3.81l-1.909-34.59a13.89,13.89,0,0,1,27.275-4.4l8.385,30.926a5.047,5.047,0,0,1-3.547,6.185L241.077,648.7a5.023,5.023,0,0,1-4.271-.778Z" transform="translate(1043.047 -25.344)" fill="#3f3d56"></path><path d="M178.865,563h0a29.832,29.832,0,0,1,29.815,28.9l5.619,0a1.865,1.865,0,0,1,1.865,1.865v7.46a1.865,1.865,0,0,1-1.865,1.865H150.89a1.865,1.865,0,0,1-1.865-1.865v-8.392A29.839,29.839,0,0,1,178.865,563Z" transform="translate(705.644 -153.689)" fill={svgColor}></path><path d="M244.988,783.287l-15.12-.721a5.039,5.039,0,0,1-4.8-5c-3.986-61.526-9.507-127.5-1.055-152.985a5.042,5.042,0,0,1,5.766-5.025l60.489,8.781a5.012,5.012,0,0,1,4.317,4.951c7.723,30.177,8.072,84.9,7.78,141.757a5.042,5.042,0,0,1-5.041,5.08h-16.3a5.018,5.018,0,0,1-4.98-4.258l-10.532-80.044a3.921,3.921,0,0,0-7.767.144l-7.509,82.884a5.061,5.061,0,0,1-5.006,4.443Q245.108,783.294,244.988,783.287Z" transform="translate(989.815 73.906)" fill="#2f2e41"></path><path d="M253.41,746.846a76.1,76.1,0,0,0-28.769-9.854,4.949,4.949,0,0,1-3.421-1.875,5.016,5.016,0,0,1-1.043-3.81L234.671,623.7a37.216,37.216,0,0,1,21.693-29.08,36.193,36.193,0,0,1,35.173,2.757q.745.5,1.462,1.012a37.169,37.169,0,0,1,14.157,38.733c-8.888,36.359-11.941,95.968-12.463,107.548a5,5,0,0,1-3.269,4.487,50.506,50.506,0,0,1-17.058,3.037A42.714,42.714,0,0,1,253.41,746.846Z" transform="translate(992.039 -39.644)" fill="#3f3d56"></path><ellipse cx="27.516" cy="27.516" rx="27.516" ry="27.516" transform="translate(1230.056 485.338)" fill="#a0616a"></ellipse><path d="M274.022,637.119a8.888,8.888,0,0,1-15.335-4.937,9,9,0,0,1,.011-1.743,40.4,40.4,0,0,0,1.8-9.807,5.143,5.143,0,0,0-.941-2.407c-4.091-5.478-13.693,2.45-17.553-2.509-2.367-3.04.415-7.828-1.4-11.226-2.4-4.485-9.5-2.273-13.952-4.729-4.955-2.733-4.659-10.335-1.4-14.959a23.53,23.53,0,0,1,17.839-9.082,47.854,47.854,0,0,1,20.157,3.933A40.283,40.283,0,0,1,282.3,592.86a32.24,32.24,0,0,1,3.259,27.45A51.743,51.743,0,0,1,274.022,637.119Z" transform="translate(1003.02 -102.5)" fill="#2f2e41"></path><path d="M317.595,603.368c-.482-2.263-4.616-5.355-10.531-7.876a65.13,65.13,0,0,0-58.816,5.041,2.778,2.778,0,0,0-2.566,2.185l-19.9,88L223.2,702.179l-1.714,7.585L218.9,721.191l-1.378,6.106A2.81,2.81,0,0,0,220,730.714l85.916,7.416c.078,0,.168.011.246.011a2.8,2.8,0,0,0,2.778-2.621l.818-12.447.874-13.309.381-5.77.863-13.276,5.725-87.2v-.078Z" transform="translate(981.237 -41.997)" fill={svgColor}></path><path d="M227.919,601.613a11.766,11.766,0,0,1,.268,1.838l48.126,27.763,11.7-6.734L300.48,640.8l-25.025,17.836-54.9-43.314a11.758,11.758,0,1,1,7.367-13.714Z" transform="translate(929.94 -34.702)" fill="#a0616a"></path><path d="M219.318,625.927a5.021,5.021,0,0,1,1.449-4.093l24.494-24.5a13.89,13.89,0,0,1,21.474,17.383L249.292,641.6a5.047,5.047,0,0,1-6.973,1.484l-20.731-13.453a5.022,5.022,0,0,1-2.27-3.7Z" transform="translate(988.653 -31.778)" fill="#3f3d56"></path><path d="M231.174,386.425l-.86,13.278-87.825-1.815,2.589-11.463Z" transform="translate(1061.939 262.296)" fill="#ccc"></path><path d="M233.376,390.213l-.875,13.308-90.867-1.88,2.589-11.428Z" transform="translate(1058.497 277.554)" fill="#ccc"></path><path d="M265.167,572.959h0a35.842,35.842,0,0,0-35.821,34.726l-6.751,0a2.241,2.241,0,0,0-2.24,2.241v8.962a2.241,2.241,0,0,0,2.24,2.241h76.181a2.24,2.24,0,0,0,2.241-2.24V608.809a35.85,35.85,0,0,0-35.85-35.85Z" transform="translate(992.943 -113.569)" fill={svgColor}></path><path d="M347.94,713.962h-7.684c-.049-.93-10.365-25.139-10.365-25.139l-6.236-15.083-4.122-10.056L313.3,648.6l-7.139-17.346a3.562,3.562,0,0,0-6.938,0L292.082,648.6l-6.236,15.083-4.122,10.056-6.236,15.083s-10.316,24.208-10.365,25.139h-7.684a7.542,7.542,0,1,0,0,15.083h90.5a7.542,7.542,0,1,0,0-15.083Z" transform="translate(1111.937 110.147)" fill="#ff6584"></path><path d="M214.631,423.392H180.945l6.234-15.083H208.4Z" transform="translate(1216.833 350.44)" fill="#f2f2f2"></path><path d="M233.286,428.392h-54.4l6.234-15.083h41.932Z" transform="translate(1208.536 370.579)" fill="#f2f2f2"></path><g transform="translate(667.431 767.724)"><path d="M355,760.111h-2.978c.273-.643-12.96-34.49-12.96-34.49l-7.944-19.357-5.33-12.972-7.944-19.357-8.646-20.966a4.557,4.557,0,0,0-8.85,0L291.7,673.935l-7.944,19.357-5.381,12.972-7.942,19.357s-13.183,33.848-12.911,34.49h-3.079a7.542,7.542,0,1,0,0,15.083H355a7.542,7.542,0,1,0,0-15.083Z" transform="translate(-246.898 -649.5)" fill="#ff6584"></path><path d="M220.157,449.526H178.125l7.944-19.357h26.144Z" transform="translate(-141.275 -405.732)" fill="#f2f2f2"></path><path d="M244.1,455.956H175.475l7.944-19.357H236.16Z" transform="translate(-151.949 -379.834)" fill="#f2f2f2"></path></g></g></svg>
+      ),
+    },
+    {
+      id: 2,
+      name: "Book",
+      svg: (
+        <svg width="94" height="94" viewBox="0 0 799.946 621.627" class="injected-svg" role="img" artist="Katerina Limpitsouni" copyright="unDraw" scrapped="true" source="https://undraw.co/"><g transform="translate(-583 -242.762)"><path d="M799.946,579.777c0,.829-1.658,1.494-3.723,1.494H3.723c-2.065,0-3.723-.665-3.723-1.494s1.658-1.494,3.723-1.494h792.5C798.288,578.283,799.946,578.949,799.946,579.777Z" transform="translate(583 248.082)" fill="#d6d6e3"></path><ellipse cx="55.446" cy="55.446" rx="55.446" ry="55.446" transform="translate(744.23 275.186)" fill="#ed9da0"></ellipse><path d="M333.618,16.03c12.213,4.292,19.2,6.749,25.6,12.915,10.812,10.417,12.6,24.338,14.255,37.274,1.3,10.119,2.975,23.2-2.958,38.151-2.022,5.1-11.833,27.829-30.608,30.7-3.687.564-12.344.712-9.849-1.13C353.155,116.891,363.01,106.6,362.2,80.323,361.7,64,336.753,46.369,321.941,43.2a25.228,25.228,0,0,0-20.5,4.775c-12.45,10.221-11.92,52.486-25.048,61.32-5.4,3.634-1.8-21.944-5.606-17.8-7.506,8.184-2.692,20.708-1.342,25.489,6.4,22.641,13.1,5.9,19.343,25.232,6.747,20.873-39.909,43.406-41.923,48.067-3.5,8.108,34.018,38.1,20.283,44.769-17.433,8.471-31.176-2.561-39.279,6.9-4.53,5.283-2.079,10.886-10.263,27.332-2.671,5.369-4.015,8.053-5.19,7.958-5.6-.45-14.656-45.242,0-86.955,6.149-17.506,12.173-34.654,28.315-48.069,8.539-7.091,15.7-9.642,17.737-17.923,2.912-11.833-9.179-16.879-11.6-35.543-1.657-12.765-2.821-31.021,1.69-42.723,4.256-11.051,7.951-20.642,17.621-29.339C268.5,14.6,287.251.4,307.131,0c9.152-.184,15.877,12.294,26.487,16.023h0Z" transform="translate(492.433 242.766)" fill="#090814"></path><g transform="translate(1039.462 678.195)"><path d="M223.527,525.812l-149.511-.729L59.16,490.238l52.531-3.813-9.156-38.2,103.9-13.467-99.492-34.587,8.789-2.088,159.981,26.1L266.9,483.8l-12.593,32.765Z" transform="translate(-55.041 -380.214)" fill={svgColor}></path><path d="M600.454,670.36s-9.9,12.086-2.04,30.358l-79.062,34.29-7.587,1.59-3.494-15.288,2.337-19.294V691.471Z" transform="translate(-346.668 -552.527)" fill="#d5d6db"></path><path d="M59.16,583.339,168.589,563.39l145,23.1-90.061,32.424Z" transform="translate(-55.041 -473.316)" fill={svgColor}></path><path d="M142.429,652.47s-10.234,19.39,1.559,37.3l162.274,35.163s-10.073-15.446.52-36.884Z" transform="translate(-138.309 -542.451)" fill={svgColor}></path><path d="M142.429,652.47s-10.234,19.39,1.559,37.3l162.274,35.163s-10.073-15.446.52-36.884Z" transform="translate(-138.309 -542.451)" opacity="0.1"></path><path d="M313.584,768.518l90.594-38.658s5.067,1.092,1.791,4.8-90.638,37.566-90.638,37.566L151.31,733.354Z" transform="translate(-145.631 -586.036)" fill={svgColor}></path><path d="M313.584,768.518l90.594-38.658s5.067,1.092,1.791,4.8-90.638,37.566-90.638,37.566L151.31,733.354Z" transform="translate(-145.631 -586.036)" opacity="0.1"></path><rect width="41.309" height="0.437" transform="translate(163.638 162.397) rotate(-18.45)" opacity="0.1"></rect><rect width="50.333" height="0.437" transform="translate(163.623 165.914) rotate(-20.82)" opacity="0.1"></rect><rect width="58.34" height="0.437" transform="translate(163.886 170.06) rotate(-22.26)" opacity="0.1"></rect><rect width="67.155" height="0.437" transform="translate(164.516 173.715) rotate(-24.31)" opacity="0.1"></rect><rect width="73.449" height="0.437" transform="matrix(0.916, -0.401, 0.401, 0.916, 165.002, 175.494)" opacity="0.1"></rect><rect width="87.895" height="0.437" transform="translate(166.018 178.481) rotate(-23.36)" opacity="0.1"></rect><path d="M614.074,659.69s3.975,1.6,1.642,4.08S524,692.114,524,692.114Z" transform="translate(-355.527 -546.517)" fill={svgColor}></path><path d="M699.75,574.18s-9.9,12.082-2.036,30.358l-79.062,34.29-7.587,1.6-3.495-15.288,2.372-19.289V595.291Z" transform="translate(-402.593 -498.359)" fill="#d5d6db"></path><path d="M158.46,487.155,267.885,467.21l145,23.1-90.061,32.424Z" transform="translate(-110.965 -419.148)" fill="#090814"></path><path d="M241.685,556.29s-10.239,19.39,1.555,37.3l162.274,35.163s-10.068-15.459.537-36.888Z" transform="translate(-194.208 -488.283)" fill="#3a3768"></path><path d="M241.685,556.29s-10.239,19.39,1.555,37.3l162.274,35.163s-10.068-15.459.537-36.888l-51.316-11.108Z" transform="translate(-194.208 -488.283)" fill="#090814"></path><path d="M412.874,672.338l90.6-38.658s5.063,1.092,1.786,4.8-90.638,37.565-90.638,37.565L250.6,637.174Z" transform="translate(-201.55 -531.869)" fill="#3a3768"></path><path d="M412.874,672.338l90.6-38.658s5.063,1.092,1.786,4.8-90.638,37.565-90.638,37.565L250.6,637.174Z" transform="translate(-201.55 -531.869)" fill="#090814"></path><path d="M600.094,646.68s-8.736,10.483,0,26.209" transform="translate(-396.196 -539.19)" opacity="0.1"></path><rect width="41.309" height="0.437" transform="translate(207.012 120.39) rotate(-18.45)" opacity="0.1"></rect><rect width="50.333" height="0.437" transform="translate(207.003 123.905) rotate(-20.82)" opacity="0.1"></rect><rect width="58.34" height="0.437" transform="translate(207.26 128.044) rotate(-22.26)" opacity="0.1"></rect><rect width="67.155" height="0.437" transform="translate(207.895 131.7) rotate(-24.31)" opacity="0.1"></rect><rect width="73.449" height="0.437" transform="matrix(0.916, -0.401, 0.401, 0.916, 208.374, 133.473)" opacity="0.1"></rect><rect width="87.895" height="0.437" transform="translate(209.393 136.461) rotate(-23.36)" opacity="0.1"></rect><path d="M713.391,563.51s3.971,1.6,1.642,4.076-91.7,28.344-91.7,28.344Z" transform="translate(-411.469 -492.349)" fill="#3a3768"></path><path d="M709.167,464.15s-9.9,21.7-2.04,39.968L628.064,528.8l-7.57,1.6L617,515.112l2.337-19.294V485.261Z" transform="translate(-407.904 -436.391)" fill="#d5d6db"></path><path d="M167.89,377.129,277.319,357.18l145,23.1L332.257,412.7Z" transform="translate(-116.276 -357.18)" fill={svgColor}></path><path d="M251.143,446.26s-10.252,19.39,1.542,37.3l162.274,35.163s-10.073-15.459.533-36.884Z" transform="translate(-199.529 -426.315)" fill={svgColor}></path><path d="M251.143,446.26s-10.252,19.39,1.542,37.3l162.274,35.163s-10.073-15.459.533-36.884Z" transform="translate(-199.529 -426.315)" opacity="0.1"></path><path d="M422.314,566.813l90.594-29.048s5.067,1.092,1.791,4.8-90.638,27.956-90.638,27.956L260.04,531.65Z" transform="translate(-206.867 -474.406)" fill={svgColor}></path><path d="M422.314,566.813l90.594-29.048s5.067,1.092,1.791,4.8-90.638,27.956-90.638,27.956L260.04,531.65Z" transform="translate(-206.867 -474.406)" opacity="0.1"></path><rect width="41.309" height="0.437" transform="translate(211.136 72.327) rotate(-18.45)" opacity="0.1"></rect><rect width="50.333" height="0.437" transform="translate(211.125 75.844) rotate(-20.82)" opacity="0.1"></rect><rect width="58.34" height="0.437" transform="translate(211.377 79.986) rotate(-22.26)" opacity="0.1"></rect><rect width="67.155" height="0.437" transform="translate(212.018 83.638) rotate(-24.31)" opacity="0.1"></rect><rect width="73.449" height="0.437" transform="matrix(0.916, -0.401, 0.401, 0.916, 212.499, 85.415)" opacity="0.1"></rect><rect width="87.895" height="0.437" transform="translate(213.517 88.405) rotate(-23.36)" opacity="0.1"></rect><path d="M722.821,453.48s3.975,1.6,1.642,4.08-91.7,28.344-91.7,28.344Z" transform="translate(-416.78 -430.382)" fill={svgColor}></path><path d="M712.45,427s-15.581,2.359-18.49,5.561" transform="translate(-451.247 -415.468)" opacity="0.1"></path><path d="M650.52,452.263a33.44,33.44,0,0,1,5.015-3.114,81.812,81.812,0,0,0,7.426-4.538" transform="translate(-426.781 -425.386)" opacity="0.1"></path></g><path d="M686.65,394.693s18.984,49.63,29.778,44.667,7.867-26.056,9.926-31.838,4.343-49.63,4.343-49.63,1.042-31.019,3.1-37.3c1.911-5.77,3.462-34.865,3.722-39.444v-.608l-2.047-35.982-11.589-2.891L697.01,251.6l-3.722,21.254-1.452,8.3-.62,3.536Z" transform="translate(198.203 221.815)" fill="#ed9da0"></path><path d="M576.871,396.443s-18.984,49.63-29.778,44.667-7.866-26.056-9.926-31.838-4.343-49.63-4.343-49.63-1.042-31.019-3.1-37.3c-1.911-5.77-3.462-34.865-3.722-39.444v-.608l2.06-35.982,11.589-2.891,26.875,9.926,3.722,21.254,1.452,8.3.62,3.536Z" transform="translate(159.526 222.237)" fill="#ed9da0"></path><path d="M563,407.356s-14.48,15.919-9.107,18.81,40.126,57.075,40.126,57.075S708.168,497.3,729.7,476.206s21.093-58.775,21.093-58.775-17.3,3.722-19.182,1.7-12.246-11.775-12.246-11.775S572.925,398.472,563,407.356Z" transform="translate(165.953 260.755)" fill="#090814"></path><path d="M774.522,266.579,737.3,296.357l-11.254.819-4.132.3-69.4,5.087L580.554,297.3l-10.708-.782-13.648-.993-28.537-27.3s20.2-21.639,37.893-36.243c6.973-5.77,13.561-10.435,18.363-12.271l.819-.285c3.02-1.178,32.6-4.261,34.754-6.688,13.971-14.405,0-48.749,0-48.749s61.629-31.838,54.184,9.926,13.34,35.583,14.2,35.978l25.09.749,4.578,2.1,11.675,5.348,26.341,12.085C776.234,239.692,774.522,266.579,774.522,266.579Z" transform="translate(159.926 200.319)" fill="#ed9da0"></path><path d="M775.008,293.064H526v-.608l2.06-35.982s20.2-21.639,37.893-36.243l156.336-6.2,7.271-7.668L755.9,218.445c20.683,9.5,19.021,36.391,19.021,36.391S777.75,285.992,775.008,293.064Z" transform="translate(159.526 213.314)" opacity="0.1"></path><path d="M775.008,292.064H526v-.608l2.06-35.982s20.2-21.639,37.893-36.243l156.336-6.2,7.271-7.668L755.9,217.445c20.683,9.5,19.021,36.391,19.021,36.391S777.75,284.992,775.008,292.064Z" transform="translate(159.526 213.073)" fill="#d6d6e3"></path><path d="M711.735,201.4l4.157,63.39,4.454,21.093,3.4,16.13s8.685,124.076,6.2,130.28,1.241,11.167,1.762,14.467-.521,11.589-.112,15.311,0,5.372-9.5,4.045-22.756-3.635-22.756-3.635-33.5,2.482-45.077-1.65-33.5-4.144-33.5-4.144-33.091.831-43.836-.409-16.552,13.239-23.574,9.095,8.263-44.245,13.227-55.834-6.613-40.945-6.613-40.945l14.889-82.6,3.313-18.723V208.408l.819-.285a20.422,20.422,0,0,0,7.866-5.484l3.722,59.234,116.631,4.144V199.35" transform="translate(165.674 211.627)" fill="#d6d6e3"></path><path d="M581.79,499.507l49.221,1.576-7.06-36.5-37.707,3.586Z" transform="translate(282.865 329.357)" fill="#ed9da0"></path><path d="M837.669,481.344c-3.313,4.132-16.13,11.576-17.371,14.058s-16.539,9.926-24.406,11.167-32.669,6.626-37.223,9.517c-3.263,2.084-29.456,8.685-46.665,12.346a132.411,132.411,0,0,1-14.132,2.544c-7.445.409-88.913-27.3-88.913-27.3l15.708-16.13.869-.3c4.442-1.5,24.964-8.437,36.354-11.738,12.83-3.722,27.719-19.021,27.719-19.021s21.912-7.445,24.815-8.276-7.445-28.947-7.445-28.947,47.558-6.6,66.17-12.2,61.629-3.524,69.483,18.4S841.032,477.212,837.669,481.344Z" transform="translate(179.499 261.003)" fill="#090814"></path><path d="M639,531.256s-9.5,9.926-19.021,9.107-42.794,2.482-42.794,2.482a66.713,66.713,0,0,0-16.763,9.715c-7.78,6.129-26.465,3.1-26.465,3.1s4.132-39.7,2.866-44.667S545,497.507,545,497.507l11.167-2.841,28.289-7.246,40.536,14.058Z" transform="translate(161.442 280.982)" fill="#090814"></path><path d="M712,512.361a132.46,132.46,0,0,1-14.132,2.544c-7.445.409-88.913-27.3-88.913-27.3l15.708-16.13.869-.3c2.482,1.749,4.516,3.251,5.968,4.392,6.837,5.385,13.437-1.65,15.919-1.65S671.4,491.7,671.4,491.7s19.852,4.554,23.165,8.685,14.889,3.313,16.949,6.2C712.132,507.485,712.206,509.681,712,512.361Z" transform="translate(179.497 277.072)" opacity="0.1"></path><path d="M592.416,420.6s-20.075,1.154-31.652-3.722-50.04-16.13-61.207-8.226-38.054,14.889-25.647,46.33,18.2,32.26,18.2,32.26a44.793,44.793,0,0,1,9.926,10.3c3.722,5.794,38.464,19.021,47.149,19.021s23.984,0,45.486,14.889S635.619,548,635.619,548s27.3,11.167,35.8,13.648,47.335,13.226,56.442,9.926,14.889-24,14.889-24,4.132-18.611,2.06-21.5-13.648-2.072-16.949-6.2-23.165-8.685-23.165-8.685-21.453-17.792-23.934-17.792-9.082,7.023-15.919,1.65a363.155,363.155,0,0,0-42.819-27.3C606.313,459.472,592.416,420.6,592.416,420.6Z" transform="translate(146.215 261.359)" fill="#090814"></path><path d="M536.27,427.513a23.7,23.7,0,0,1,20.336,5.372c9.926,8.276,43.327,24.89,43.327,24.89" transform="translate(161.999 266.444)" opacity="0.1"></path><path d="M746.481,427s-44.258,6.7-52.521,15.795" transform="translate(199.964 266.436)" opacity="0.1"></path><path d="M799.36,549.458h-1.948c-7-.248-30.709-.993-35.275,0-5.372,1.241-76.518,0-76.518,0l13.909-2.891s-5.162-18.09-1.886-19.592c0,0-18.611-12.259-4.578-20.535s29.158-4.789,29.158-4.789l35.225-11.936,6.762-2.3s39.7,2.072,50.449,29.369S799.36,549.458,799.36,549.458Z" transform="translate(197.955 280.982)" fill="#090814"></path><path d="M533.79,250.96l21.961-19.852s85.153-5.583,88.677,23.364c0,0,30.188-34.319,93.677-26.676l26.862,21.391-74.247,32.582-72.15,25.026-53.142-23.785Z" transform="translate(161.4 218.208)" fill="#f2f2f2"></path><path d="M437.38,202.83,447.1,319.052l102.983,5.174L545.612,208.5l-.087-1.948Z" transform="translate(248.096 266.338)" fill={svgColor}></path><path d="M655.944,200.83,549.71,216.761V333.5l103.814-15Z" transform="translate(275.141 265.857)" fill={svgColor}></path><path d="M626.275,223.79l-57.385,6.378,1.253,19.554,56.095-6.129Z" transform="translate(279.758 271.385)" fill="#fff" opacity="0.3"></path><path d="M538.774,410.164l5.844,15.72s8.685,7.445,18.19,3.722,17.793-5.571,21.924-9.194,9.926-21.825,9.926-21.825,5.794-19.852,11.576-24.815,21.093-73.341,0-66.654-37.223,68.726-37.223,68.726-3.722,4.541-9.095,4.963-16.13-.831-18.2,3.722S532.57,401.07,538.774,410.164Z" transform="translate(162.001 237.462)" fill="#ed9da0"></path><path d="M644.335,258.587a35.734,35.734,0,0,1-31.155-7.767l4.479,115.713s10.546,11.415,26.676,8.809Z" transform="translate(180.515 224.019)" fill={svgColor}></path><path d="M644.335,258.587a35.734,35.734,0,0,1-31.155-7.767l4.479,115.713s10.546,11.415,26.676,8.809Z" transform="translate(180.515 224.019)" opacity="0.1"></path><path d="M640.29,248.808s43.216-13.214,54.482-11.353" transform="translate(187.041 220.758)" opacity="0.1"></path><path d="M610.816,243.4s-41.888-9.926-48.886-7.11" transform="translate(168.177 220.398)" opacity="0.1"></path><path d="M662.25,249.242s28.9-10.6,39.345-5.559" transform="translate(192.328 221.973)" opacity="0.1"></path><path d="M650.52,466.348a95,95,0,0,1,14.244-8.847c7.444-3.586,21.093-12.891,21.093-12.891" transform="translate(189.505 270.675)" opacity="0.1"></path><path d="M568.214,360.08s-18.128,14.827-23.574,16.13-8.809,12.867-8.809,12.867" transform="translate(161.891 250.324)" opacity="0.1"></path><path d="M730.5,408.377l-5.782,15.758s-8.685,7.445-18.2,3.722-17.78-5.571-21.924-9.194-9.926-21.825-9.926-21.825-5.782-19.852-11.576-24.815-21.093-73.341,0-66.654,37.223,68.726,37.223,68.726,3.722,4.541,9.095,4.963,16.13-.831,18.2,3.722S736.7,399.32,730.5,408.377Z" transform="translate(189.93 237.041)" fill="#ed9da0"></path><path d="M691.69,358.3s15.97,13,20.783,14.144,7.766,11.282,7.766,11.282" transform="translate(203.25 253.466)" opacity="0.1"></path></g></svg>
+      ),
+    },
+    {
+      id: 3,
+      name: "Desktop",
+      svg: (
+        <svg width="64" height="64" viewBox="0 0 799.031 618.114" role="img" artist="Katerina Limpitsouni" source="https://undraw.co/"><g transform="translate(-560.484 -230.943)"><path d="M15.18,488.763c0,.872.478,1.573,1.073,1.573h535.1c.6,0,1.073-.7,1.073-1.573s-.478-1.573-1.073-1.573H16.253C15.658,487.191,15.18,487.891,15.18,488.763Z" transform="translate(675.964 358.721)" fill="#ccc" /><rect width="19.105" height="3.371" transform="translate(865.646 842.299)" fill="#b6b3c5" /><rect width="19.105" height="3.371" transform="translate(1034.779 842.859)" fill="#b6b3c5" /><path d="M352.955,370.945a27.529,27.529,0,0,1-54.321,0H229.146V521.536h193.3V370.945H352.955Z" transform="translate(634.205 321.322)" fill="#d6d6e3" /><rect width="193.296" height="5.242" transform="translate(863.914 830.928)" fill="#090814" /><path d="M788.255,487.17H10.776A10.788,10.788,0,0,1,0,476.394V32.688A10.788,10.788,0,0,1,10.776,21.911H788.255a10.789,10.789,0,0,1,10.776,10.776V476.394a10.789,10.789,0,0,1-10.776,10.776Z" transform="translate(560.484 209.031)" fill="#090814" /><path d="M0,0H760.822V429.3H0Z" transform="translate(580.032 248.924)" fill="#090814" /><path d="M4,0H76a4,4,0,0,1,4,4v8a4,4,0,0,1-4,4H4a4,4,0,0,1-4-4V4A4,4,0,0,1,4,0Z" transform="translate(766.484 283.943)" fill="#f2f2f2" /><rect width="160" height="88" rx="8" transform="translate(766.484 315.943)" fill={svgColor} /><rect width="160" height="88" rx="8" transform="translate(950.484 315.943)" fill={svgColor} /><rect width="528" height="64" rx="16" transform="translate(766.484 499.943)" fill="#3f3d56" /><rect width="528" height="64" rx="16" transform="translate(766.484 419.943)" fill="#3f3d56" /><rect width="108" height="360" rx="4" transform="translate(625.484 283.943)" fill="#232139" /><path d="M6,0H26a6,6,0,0,1,6,6v4a6,6,0,0,1-6,6H6a6,6,0,0,1-6-6V6A6,6,0,0,1,6,0Z" transform="translate(663.484 298.943)" fill="#6c63ff" /><path d="M4,0H76a4,4,0,0,1,4,4v8a4,4,0,0,1-4,4H4a4,4,0,0,1-4-4V4A4,4,0,0,1,4,0Z" transform="translate(639.484 611.943)" fill={svgColor} /><rect width="80" height="16" rx="8" transform="translate(639.484 330.943)" fill="#fff" /><rect width="80" height="16" rx="8" transform="translate(639.484 354.943)" fill="#3f3d56" /><rect width="80" height="16" rx="8" transform="translate(639.484 378.943)" fill="#3f3d56" /><rect width="80" height="16" rx="8" transform="translate(639.484 402.943)" fill="#3f3d56" /><rect width="80" height="16" rx="8" transform="translate(639.484 426.943)" fill="#3f3d56" /><path d="M4,0H76a4,4,0,0,1,4,4v8a4,4,0,0,1-4,4H4a4,4,0,0,1-4-4V4A4,4,0,0,1,4,0Z" transform="translate(1214.484 283.943)" fill={svgColor} /><rect width="160" height="88" rx="8" transform="translate(1134.484 315.943)" fill={svgColor} /><g transform="translate(5410.361 -15621.859)"><g transform="translate(-4643.045 16206.045)" opacity="0.499"><path d="M998.915,578.965c-15.658-7.176-41.82-8.525-64.3-6.35s-42.668,7.266-63.573,11.393-44.116,7.382-66.763,5.536c-21.869-1.783-39.934-8.016-58.69-13.1s-41.608-9.282-62.816-6.4c-26.251,3.564-38.347,16.02-57.2,24.542-19.731,8.917-47.8,13.651-76.593,12.915s-55.317-6.864-72.378-16.721v38.082H997.539Z" transform="translate(-476.595 -569.097)" fill={svgColor} /></g><path d="M475.357,591.227c22.382,13.268,61.076,20.081,98.087,16.888,18.631-1.61,35.837-5.51,49.611-11.248,12.429-5.219,20.976-11.87,31.993-17.613a85.257,85.257,0,0,1,18.493-7.235,98.229,98.229,0,0,1,27.166-2.695c21.18.675,39.372,6.222,56.444,11.253,16.591,4.889,34.05,9.642,54.511,10.246,21.527.635,42.458-2.828,61.572-6.813,19.562-4.078,38.632-8.932,59.912-11.1,17.337-1.769,37.059-1.434,52.619,2.685a60.555,60.555,0,0,1,10.137,3.616c1.587.741,4.123-.376,2.54-1.115-12.022-5.612-29.715-7.858-46.891-7.755-20.042.12-38.849,3.492-56.647,7.255-19.782,4.182-39.209,8.988-60.949,10.928a174.111,174.111,0,0,1-32.741.043,180.769,180.769,0,0,1-27.778-5.26c-17.472-4.583-33.28-10.383-52.551-13.534-17.711-2.9-37.072-2.943-52.95,1.962-13.669,4.223-22.772,10.605-32.589,16.4a117.361,117.361,0,0,1-17.273,8.613A145.616,145.616,0,0,1,593.4,603.7a207.461,207.461,0,0,1-56.711,2.883c-18.545-1.652-35.587-5.644-49.037-11.486a83.448,83.448,0,0,1-9.191-4.665c-1.361-.807-4.48-.021-3.1.8Z" transform="translate(-5118.89 15637.573)" fill="#6c63ff" /><circle cx="5.256" cy="5.256" r="5.256" transform="translate(-4427.652 16201.28)" fill="#6c63ff" /><circle cx="5.256" cy="5.256" r="5.256" transform="translate(-4147.121 16202.857)" fill="#6c63ff" /><circle cx="5.256" cy="5.256" r="5.256" transform="translate(-4610.844 16235.666)" fill="#6c63ff" /></g></g></svg>
+
+
+      ),
+    },
+
+    {
+      id: 4,
+      name: "Chill guy avatar",
+      svg: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="84" height="84" viewBox="0 0 640 640" class="injected-svg" role="img" artist="Katerina Limpitsouni" copyright="unDraw" scrapped="true" source="https://undraw.co/"><defs><clipPath id="a-2"><circle cx="320" cy="320" r="320" transform="translate(1129 200)" fill="none" stroke="#707070" stroke-width="1"></circle></clipPath></defs><g transform="translate(-68 -152)"><circle cx="320" cy="320" r="320" transform="translate(68 152)" fill="#f2f2f2"></circle><g transform="translate(-1061 -48)" clip-path="url(#a-2)"><g transform="translate(1282.835 383.564)"><path d="M322.991,81.632a77.011,77.011,0,1,0-100.083,73.49l2.574,148.209L343.189,187.152s-45.895-17.77-54.687-41.318a76.927,76.927,0,0,0,34.489-64.2Z" transform="translate(-88.792 -2.564)" fill="#ed9da0"></path><path d="M316.956,145.878s26.276-9.358,39.746-36.688c12.372-25.1,13.729-67.868-21.4-78.254,0,0,20.239-17.474-17.075-28.12l4.964,4.579s-4.38-7.91-26.009-3.232c0,0-79.924-9.309-94.11,17.007,0,0-42.9,8.791-20.053,41.422,0,0,1.181,6.35,9.332,6.23L188.277,63.5l12.411,5.326s17.262-27.495,33.554-12.292c0,0,31.159-1.311,46.062-4.041,0,0-2.991,40.025,25.612,47.82S316.956,145.878,316.956,145.878Z" transform="translate(-117.59 -2.564)" fill={svgColor}></path><path d="M326.614,167.618c-32.442,32.6-63.25,41.349-91.6,14.169L194.983,475.145l16.646,24.119,101.232.288,13.753-331.935Z" transform="translate(-98.23 -2.564)" fill={svgColor}></path><path d="M73.546,164.669l16.928,13.913,51.392,29.332A76.58,76.58,0,0,1,188.3,256.9a461.327,461.327,0,0,1,17.4,80.883c8.447,69.355,2.313,160.805,2.313,160.805l-78.132.679,3.4-45.86,12.569-113.461-.333,159.61H54.465s-6.231-270.71,7.347-330.913a7.284,7.284,0,0,1,11.734-3.97Z" transform="translate(160.166 -2.564)" fill={svgColor}></path><path d="M423.367,181.787l-61.562,29.6a75.081,75.081,0,0,0-41,52.524L295.009,389.2l-8.43,75.786s36.266,32.479,60.065,21.709l-1.7,12.569h55.032l23.389-317.477Z" transform="translate(-286.579 -2.564)" fill={svgColor}></path><path d="M242.031,183.241,202.393,473.7l-3.454-5,40.035-293.358c25.9,24.833,53.852,19.672,83.229-6.266a4.738,4.738,0,0,1,7.875,3.471c-31.14,29.712-60.736,36.888-88.047,10.7Z" transform="translate(-105.651 -2.564)" fill="#090814"></path></g></g></g></svg>
+      ),
+    }
+  ];
+
+  
+
+
+
+
+
+
+ // Filtered list based on search
+  const filteredSVGs = svgList.filter((item) =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  // Pagination calculation
+  const totalPages = Math.ceil(filteredSVGs.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const visibleSVGs = filteredSVGs.slice(startIndex, startIndex + itemsPerPage);
+
+  const downloadSVG = () => {
+    if (!svgRef.current) return;
+    const svgElement = svgRef.current.querySelector('svg');
+    const svgData = new XMLSerializer().serializeToString(svgElement);
+    const blob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'downloaded-image.svg';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
+  const downloadPNG = () => {
+    if (!svgRef.current) return;
+    const svgElement = svgRef.current.querySelector('svg');
+    const svgData = new XMLSerializer().serializeToString(svgElement);
+    const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+    const url = URL.createObjectURL(svgBlob);
+    const img = new Image();
+
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = svgElement.viewBox.baseVal.width || 100;
+      canvas.height = svgElement.viewBox.baseVal.height || 100;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+      const pngUrl = canvas.toDataURL('image/png');
+      const link = document.createElement('a');
+      link.href = pngUrl;
+      link.download = 'downloaded-image.png';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    };
+
+    img.src = url;
+  };
+
+
+
+
+
+
+
+  
+
   return (
-    <>
-      <header>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <div className="container ">
-            <Link href="/" className="navbar-brand">Logo</Link>            
-          </div>
-        </nav>
-      </header>
-
-      <div className="title text-center my-5">
-        <h1>Illustrations</h1>
-        <p>Browse to find the images that fit your needs and click to download. Use <br /> the on-the-fly color image generation to match your brand identity.</p>
-        <Link href={"/home"} className='btn main-btn browse-now-btn'>Browse now</Link>
-      </div>
-      <div className='row justify-content-center m-auto'>
-        <div className="col-lg-8 d-flex justify-content-center">
-          <SVGHero />
-        </div>
-
-      </div>
-
-      <div className='container hero-box text-center mb-5'>
-        <h3>A constantly updated collection of beautiful svg images that <br />you can use completely free and without attribution.</h3>
-        <p>Create better looking landing pages, mobile apps and products.</p>
-        <div className="row w-75  mx-auto my-5">
-          <div className="col-lg-4">
-            <div className='bg-white w-50 m-auto mb-3'>
-              <img src="https://undraw.co/ud_steps_1.svg" alt="" />
-            </div>
-            <p>
-              Browse or search the artwork that fits your product and messaging.
-            </p>
-          </div>
-          <div className="col-lg-4">
-            <div className='bg-white w-50 m-auto mb-3'>
-              <img src="https://undraw.co/ud_steps_1.svg" alt="" />
-            </div>
-            <p>
-              Browse or search the artwork that fits your product and messaging.
-            </p>
-          </div>
-          <div className="col-lg-4">
-            <div className='bg-white w-50 m-auto mb-3'>
-              <img src="https://undraw.co/ud_steps_1.svg" alt="" />
-            </div>
-            <p>
-              Browse or search the artwork that fits your product and messaging.
-            </p>
-          </div>
-
-        </div>
-      </div>
-
-
-      <div className='container my-5'>
-        <h2 className='text-center'>More than just beautiful and open artwork.</h2>
-        <div className='row my-5'>
-          <div className="col-lg-4">
-            <div className='card hero-card'>
-              <img src="https://undraw.co/features_1.svg" alt="" width="30%" className='mb-4' />
-              <h5>Infinite scalability</h5>
-              <p>SVG images scale without quality degradation, making them not just 6K but future-ready.</p>
-            </div>
-          </div>
-          <div className="col-lg-4">
-            <div className='card hero-card'>
-              <img src="https://undraw.co/features_1.svg" alt="" width="30%" className='mb-4' />
-              <h5>Infinite scalability</h5>
-              <p>SVG images scale without quality degradation, making them not just 6K but future-ready.</p>
-            </div>
-          </div>
-          <div className="col-lg-4">
-            <div className='card hero-card'>
-              <img src="https://undraw.co/features_1.svg" alt="" width="30%" className='mb-4' />
-              <h5>Infinite scalability</h5>
-              <p>SVG images scale without quality degradation, making them not just 6K but future-ready.</p>
-            </div>
+<>
+      {/* Navbar */}
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container">
+          <a className="navbar-brand" href="#">unDraw</a>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item me-3">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Search"
+                  value={searchTerm}
+                  onChange={(e) => {
+                    setSearchTerm(e.target.value);
+                    setCurrentPage(1); // reset page on search
+                  }}
+                />
+              </li>
+              <li className="nav-item">
+                <input
+                  type="color"
+                  className="form-control form-control-color"
+                  value={svgColor}
+                  onChange={(e) => setSvgColor(e.target.value)}
+                  title="Choose color"
+                />
+              </li>
+            </ul>
           </div>
         </div>
-        <div className='row my-5'>
-          <div className="col-lg-4">
-            <div className='card hero-card'>
-              <img src="https://undraw.co/features_1.svg" alt="" width="30%" className='mb-4' />
-              <h5>Infinite scalability</h5>
-              <p>SVG images scale without quality degradation, making them not just 6K but future-ready.</p>
+      </nav>
+
+      {/* Main Content */}
+      <main>
+        <div className="container py-4">
+          <div className="row">
+            {visibleSVGs.length > 0 ? (
+              visibleSVGs.map((item) => (
+                <div className="col-lg-2 col-md-3 col-sm-4 col-6 mb-4" key={item.id}>
+                  <div
+                    className="svg-card p-2 border rounded text-center"
+                    data-bs-toggle="modal"
+                    href="#exampleModalToggle"
+                    role="button"
+                    onClick={() => setSelectedSVG(item.svg)}
+                  >
+                    <div>{item.svg}</div>
+                    <p className="mt-2">{item.name}</p>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p>No results found.</p>
+            )}
+          </div>
+
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="d-flex justify-content-center align-items-center mt-4">
+              <button
+                className="btn btn-outline-primary me-3"
+                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                disabled={currentPage === 1}
+              >
+                Previous
+              </button>
+              <span>Page {currentPage} of {totalPages}</span>
+              <button
+                className="btn btn-outline-primary ms-3"
+                onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                disabled={currentPage === totalPages}
+              >
+                Next
+              </button>
+            </div>
+          )}
+        </div>
+      </main>
+
+      {/* Modal */}
+      <div className="modal fade" id="exampleModalToggle" aria-hidden="true" tabIndex="-1">
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div className="modal-body text-center">
+              {selectedSVG ? (
+                <div ref={svgRef}>{selectedSVG}</div>
+              ) : (
+                <p>Select an SVG to view</p>
+              )}
+              <div className="mt-3">
+                <button className="btn btn-primary me-2" onClick={downloadPNG}>Download PNG</button>
+                <button className="btn btn-secondary" onClick={downloadSVG}>Download SVG</button>
+              </div>
             </div>
           </div>
-          <div className="col-lg-4">
-            <div className='card hero-card'>
-              <img src="https://undraw.co/features_1.svg" alt="" width="30%" className='mb-4' />
-              <h5>Infinite scalability</h5>
-              <p>SVG images scale without quality degradation, making them not just 6K but future-ready.</p>
-            </div>
-          </div>
-          <div className="col-lg-4">
-            <div className='card hero-card'>
-              <img src="https://undraw.co/features_1.svg" alt="" width="30%" className='mb-4' />
-              <h5>Infinite scalability</h5>
-              <p>SVG images scale without quality degradation, making them not just 6K but future-ready.</p>
-            </div>
-          </div>
-          <Link href={"/home"} className='btn main-btn browse-now-btn m-auto mt-5'>Browse now</Link>
         </div>
       </div>
-      <Footer />
     </>
-  )
+  );
 }
-
-export default page
-
-
-
 
