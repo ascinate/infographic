@@ -1,0 +1,187 @@
+/* :root {
+  --background: #ffffff;
+  --foreground: #171717;
+} */
+
+/* @theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+} */
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+} */
+
+/* body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+} */
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+:root {
+  --primary-card: #f9fafb;
+}
+
+.svg-card {
+  margin-top: 1rem;
+  width: 188px;
+  height: 147px;
+  padding-block: 1.5rem;
+  background-color: var(--primary-card);
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+
+.svg-card-text{
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.main-btn {
+  font-size: 24px;
+  border: 1px solid lightgray;
+  margin: 20px;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+.download-png {
+  background-color: #665df5;
+  color: white;
+}
+
+.download-svg {
+  background-color: #0e8f2a;
+  color: white;
+}
+
+.modal-header {
+  border: none !important;
+}
+
+.btn-close {
+  background-color: red !important;
+  border-radius: 50% !important;
+}
+
+/* .download-container{
+
+} */
+
+.page-btn {
+  background-color: #665df5;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  width: 100px;
+  margin: 0 10px;
+}
+
+.svg-card svg {
+  width: 78px;
+  height: 78px;
+}
+
+.form-control-color {
+  width: 40px;
+}
+
+.svg-modal svg {
+  width: 100px;
+  height: 100px;
+}
+
+.placeholder-card {
+  background-color: #f3f4f6;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  width: 188px;
+  height: 147px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulse .3s infinite;
+}
+
+/* Optional pulse animation */
+@keyframes pulse {
+  0% {
+    background-color: #f3f4f6;
+  }
+
+  50% {
+    background-color: #e5e7eb;
+  }
+
+    100% {
+      background-color: #f3f4f6;
+    }
+}
+.search-bar{
+  border: 8px;
+  padding: 5px 20px;
+  border-radius: 8px;
+  border: 1px solid lightgray;
+}
+.title{
+  & p{
+    color: gray;
+  }
+}
+.main-btn{
+  background-color: #f9fafb;
+  font-size: 16px;
+  width: 50%;
+  padding: 15px 0 !important;
+}
+
+
+
+/* home page start */
+
+.hero{
+  text-align: center;
+}
+.hero-box{
+  border-radius: 8px;
+  width: 80%;
+  padding: 112px 24px;
+  background-color: #e0e7ff;
+}
+.hero-card{
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  padding: 24px 34px;
+}
+
+.browse-now-btn{
+  width: 30%;
+    padding: 15px 0 !important;
+    background-color: #665df5;
+    color: white;
+}
+/* home page end */
