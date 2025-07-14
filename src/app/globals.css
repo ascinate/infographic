@@ -52,6 +52,9 @@ a {
   background-color: var(--primary-card);
   border-radius: 8px;
   border: 1px solid #e5e7eb;
+  & p {
+    margin: 0px;
+  }
 }
 
 
