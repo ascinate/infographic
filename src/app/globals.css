@@ -43,7 +43,13 @@ a {
 :root {
   --primary-card: #f9fafb;
 }
-
+.nav-bg{
+  position: sticky;
+  top: 0;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px 0px;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+}
 .svg-card {
   margin-top: 1rem;
   width: 188px;

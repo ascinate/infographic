@@ -14,13 +14,13 @@ function Footer() {
                   <li><a href="#">Blog</a></li>
                 </ul>
               </li>
-              <li>© 2025 · Pritam Ghosh · All rights reserved</li>
+              <li>© 2025 · Ascinate Technology · All rights reserved</li>
             </ul>
           </div>
           <div className="me-5">
             <ul>
-              <li className='my-2'>Created by Pritam Ghosh</li>
-              <li>Code / Design by Pritam Ghosh</li>
+              <li className='my-2'>Created by Ascinate Technology</li>
+              <li>Code / Design by Ascinate Technology</li>
             </ul>
           </div>
         </div>
