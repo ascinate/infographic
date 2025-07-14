@@ -63,7 +63,10 @@ a {
     margin: 0px;
   }
 }
-
+.svg-shapes svg{
+  width: 50% !important;
+  height: 50% !important;
+}
 
 .svg-card-text{
   font-size: 14px;
@@ -158,6 +161,8 @@ a {
   border: 1px solid lightgray;
 }
 .title{
+
+  margin-top: 100px;
   & p{
     color: gray;
   }

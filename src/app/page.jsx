@@ -9,7 +9,7 @@ export default function Home() {
     import('bootstrap/dist/js/bootstrap.bundle.min.js');
   }, []);
 
-  //state
+  //state 
   const [svgColor, setSvgColor] = useState('#576FF8');
   const [selectedSVG, setSelectedSVG] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
@@ -191,11 +191,16 @@ export default function Home() {
     const img = new Image();
 
     img.onload = () => {
+      // Use real dimensions of rendered SVG
+      const { width, height } = svgElement.getBoundingClientRect();
+
       const canvas = document.createElement('canvas');
-      canvas.width = svgElement.viewBox.baseVal.width || 100;
-      canvas.height = svgElement.viewBox.baseVal.height || 100;
+      canvas.width = Math.ceil(width);
+      canvas.height = Math.ceil(height);
       const ctx = canvas.getContext('2d');
-      ctx.drawImage(img, 0, 0);
+
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
       const pngUrl = canvas.toDataURL('image/png');
       const link = document.createElement('a');
       link.href = pngUrl;
@@ -249,7 +254,7 @@ export default function Home() {
       </header>
       {/* Main Content */}
       <main>
-        <div className="title text-center my-5">
+        <div className="title text-center">
           <h1>Illustrations</h1>
           <p>Browse to find the images that fit your needs and click to download. Use <br /> the on-the-fly color image generation to match your brand identity.</p>
 
@@ -267,7 +272,7 @@ export default function Home() {
                     role="button"
                     onClick={() => setSelectedSVG(item.svg)}
                   >
-                    <div>{item.svg}</div>
+                    <div >{item.svg}</div>
                     <p className="mt-3">{item.name}</p>
                   </div>
                 </div>
@@ -296,9 +301,9 @@ export default function Home() {
             <div className="modal-header">
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div className="modal-body text-center">
+            <div className="modal-body text-center ">
               {selectedSVG ? (
-                <div ref={svgRef}>{selectedSVG}</div>
+                <div ref={svgRef} className='svg-shapes'>{selectedSVG}</div>
               ) : (
                 <p>Select an SVG to view</p>
               )}
