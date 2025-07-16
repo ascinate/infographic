@@ -245,4 +245,31 @@ height: 160px;
     margin: auto;
   }
 }
+
+
+
+.featured-Illus{
+  & p{
+    font-size: 16px !important;
+  }
+}
+
+
+
+.cat-bus{
+  background-color: #fdf4f2;
+  padding: 20px 30px;
+  border-radius: 6px;
+}
+.cy{
+  background-color: #fff9ed;
+}
+.cb{
+  background-color: #f1f6fc;
+}
+
+.p-tag{
+  font-size: 18px !important;
+font-weight: 600;
+}
 /* home page end */
