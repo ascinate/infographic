@@ -186,6 +186,7 @@ a {
 .hero {
   text-align: center;
 }
+
 .title {
 
   & p {
@@ -207,9 +208,11 @@ a {
   border-radius: 8px;
   padding: 24px 34px;
 }
-.hero-bg{
+
+.hero-bg {
   background-color: #faf6f0;
 }
+
 .browse-now-btn {
   margin: 0;
   width: 40%;
@@ -218,29 +221,32 @@ a {
   color: white;
   border: none;
 }
-.outline-btn{
+
+.outline-btn {
   border: 1px solid #e3e3e3;
-    background-color: #fefefd;
-color: black;
-margin-left: 18px;
+  background-color: #fefefd;
+  color: black;
+  margin-left: 18px;
 }
 
 
-.hero-left{
-  
-  & h1{
+.hero-left {
+
+  & h1 {
     margin-bottom: 20px;
   }
+
   & p {
     margin-bottom: 35px;
     color: gray;
   }
 }
 
-.card-bg{
+.card-bg {
   background-color: #f6f8fc;
-border: none;
-height: 160px;
+  border: none;
+  height: 160px;
+
   & svg {
     margin: auto;
   }
@@ -248,28 +254,76 @@ height: 160px;
 
 
 
-.featured-Illus{
-  & p{
+.featured-Illus {
+  & p {
     font-size: 16px !important;
   }
 }
 
 
 
-.cat-bus{
+.cat-bus {
   background-color: #fdf4f2;
   padding: 20px 30px;
   border-radius: 6px;
 }
-.cy{
+
+.cy {
   background-color: #fff9ed;
 }
-.cb{
+
+.cb {
   background-color: #f1f6fc;
 }
 
-.p-tag{
+.p-tag {
   font-size: 18px !important;
-font-weight: 600;
+  font-weight: 600;
 }
+
+/* how it work start*/
+.preview-box {
+  padding: 20px 20px 30px 20px;
+  border: 1px solid rgb(235, 233, 233);
+  border-radius: 8px;
+}
+
+.next-arrow {
+  position: absolute;
+  border: 10px solid #ffffff;
+  border-radius: 50%;
+}
+
+.home-badge {
+  text-align: center;
+  width: 50%;
+  margin: auto;
+  border-radius: 8px;
+  padding: 2px 8px !important;
+  text-align: center;
+  background-color: #99abbe;
+  color: #ffffff;
+  font-size: 14px;
+}
+.icon-bg {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  border-radius: 50%;
+  background-color: #fff2d9;
+  margin-right: 10px;
+}
+
+.htext{
+  font-size: 18px;
+  color: #171717;
+  font-weight: 500;
+}
+
+/* how it work end */
+
+
 /* home page end */
