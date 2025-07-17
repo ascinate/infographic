@@ -134,9 +134,9 @@ function page() {
                                                 <label class="form-check-label" for="flexRadioDefault1">
                                                     Character 1
                                                 </label>
-                                                <button className=''>
+                                    
                                                     <img src="/ilayer.svg" alt="" />
-                                                </button>
+                                         
                                             </li>
                                             <li className='form-check layer'>
                                                 <label class="form-check-label" for="flexRadioDefault1">
@@ -176,21 +176,32 @@ function page() {
                 </section>
 
                 {/* simmler-infographic section*/}
-                <section className='simmler-infographic mb-5'>
-
+                <section className=' mb-5'>
                     <div className="container">
-                        <h4>You may also like</h4>
-                        <div className="row">
+                        <h4 className='mb-4'>You may also like</h4>
+                        <div className="row simmler-infographic">
+                            <div className="col-lg-3 ">
+                                <div className="card p-5">
+                                    <img src="/slice-cake.svg" alt="" />
+                                </div>
+                            </div>
+                            <div className="col-lg-3 ">
+                                <div className="card p-5">
+                                    <img src="/slice-cake.svg" alt="" />
+                                </div>
+                            </div>
+                            <div className="col-lg-3 ">
+                                <div className="card p-5">
+                                    <img src="/slice-cake.svg" alt="" />
+                                </div>
+                            </div>
                             <div className="col-lg-3 ">
                                 <div className="card p-5">
                                     <img src="/slice-cake.svg" alt="" />
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
-
                 </section>
 
 
