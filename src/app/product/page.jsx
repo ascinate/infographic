@@ -43,9 +43,9 @@ function page() {
                                             <path d="M72.2352 42.3305C72.2354 39.642 74.4027 37.6349 76.7586 38.1137C84.0162 39.5888 88.5989 44.0381 91.4041 49.521C94.2246 55.0334 95.2328 61.5728 95.2762 67.0737C95.2906 68.8999 93.3415 70.0951 91.535 69.1919L84.0135 65.4311C83.5804 65.2145 83.124 65.0456 82.6541 64.9282L75.826 63.2212C73.7158 62.6935 72.2353 60.7977 72.2352 58.6225V42.3305ZM70.3387 58.6225C70.3388 61.6679 72.4116 64.3223 75.3661 65.061L82.1942 66.768C82.5298 66.8519 82.8555 66.9727 83.1649 67.1274L90.6873 70.8881C93.5853 72.3369 97.1987 70.4923 97.1717 67.059C97.1269 61.3772 96.0904 54.5188 93.0916 48.6577C90.0777 42.7669 85.0663 37.8671 77.1366 36.2553C73.3349 35.4827 70.3389 38.7357 70.3387 42.3305V58.6225Z" fill="black" />
                                         </svg>
                                     </div>
-                                    <div>
-                                        <button>Animate it</button>
-                                        <button>Change Editor</button>
+                                    <div className='text-center my-4'>
+                                        <button className='btn button-a me-4'>Animate it</button>
+                                        <button className='btn button-a'>Change Editor</button>
                                     </div>
                                     <div className='row align-items-center justify-content-center'>
                                         <h5>Styles</h5>
@@ -134,9 +134,7 @@ function page() {
                                                 <label class="form-check-label" for="flexRadioDefault1">
                                                     Character 1
                                                 </label>
-                                    
-                                                    <img src="/ilayer.svg" alt="" />
-                                         
+                                                <img src="/ilayer.svg" alt="" />
                                             </li>
                                             <li className='form-check layer'>
                                                 <label class="form-check-label" for="flexRadioDefault1">

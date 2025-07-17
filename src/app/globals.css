@@ -337,6 +337,7 @@ a {
 
 /* ****************** product-page start******************** */
 .canvas-editor {
+  padding: 30px;
   border: 2px solid #e5e7eb;
   border-radius: 8px;
 }
@@ -390,5 +391,12 @@ border: 1px solid lightgray;
 .learsmore{
   text-decoration: underline;
   color: green;
+}
+
+.button-a{
+  background-color: #0e8f2a;
+  border: none;
+  color: #ffffff;
+  padding: 8px 28px;
 }
 /* ****************** product-page end******************** */
