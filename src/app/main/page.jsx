@@ -155,7 +155,7 @@ export default function Home() {
       </header>
       {/* Main Content */}
       <main>
-        <div className="title text-center">
+        <div className="title text-center mt-5">
           <h1>Illustrations</h1>
           <p>Browse to find the images that fit your needs and click to download. Use <br /> the on-the-fly color image generation to match your brand identity.</p>
 

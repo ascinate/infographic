@@ -12,20 +12,34 @@ export default function ProductPage({ params }) {
   if (!svgItem) return <p>SVG Not Found</p>;
 
   return (
-    <main className="container text-center my-5">
-      <h2>{svgItem.name}</h2>
+    <main className="text-center my-5">
 
-      <input
-        type="color"
-        value={svgColor}
-        onChange={(e) => setSvgColor(e.target.value)}
-        className="form-control form-control-color w-auto mx-auto my-3 product-colorinput"
-      />
+      <div className='container'>
+        <div className="row">
+          <div className="col-lg-8">
+            <div style={{ width: "auto", height: "auto", margin: "0 auto" }} className='product-page-svg canvas-editor'>
+              {svgItem.getSvg()}
+                    <h2>{svgItem.name}</h2>
+            </div>
 
-      <div style={{ width: "auto", height: "auto", margin: "0 auto" }} className='product-page-svg'>
-        {svgItem.getSvg()}
+          </div>
+          <div className='col-lg-4'>
+            <div className='right-toolbar'>
+              <h4>Color</h4>
+              <input
+                type="color"
+                value={svgColor}
+                onChange={(e) => setSvgColor(e.target.value)}
+                className="form-control form-control-color w-auto mx-auto my-3 product-colorinput"
+              />
+            </div>
+          </div>
+        </div>
+
       </div>
-{/* 
+
+
+      {/* 
       <select
         className="form-select w-50 mx-auto my-3"
         value={selectSize}
