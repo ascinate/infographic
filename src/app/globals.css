@@ -408,4 +408,15 @@ border: 1px solid lightgray;
 
 .layers-section > layer{
 }
+
+
+
+.product-colorinput{
+  width: 100px !important;
+}
+
+.product-page-svg svg{
+height: 300px;
+width: 300px;
+}
 /* ****************** product-page end******************** */
