@@ -364,6 +364,8 @@ a {
   border: 2px solid #e5e7eb;
 }
 .layer{
+  width: 70% !important;
+  margin-top: 10px;
   font-weight: 600;
   padding: 4px 8px;
   width: 50%;
@@ -398,5 +400,12 @@ border: 1px solid lightgray;
   border: none;
   color: #ffffff;
   padding: 8px 28px;
+}
+
+
+
+
+
+.layers-section > layer{
 }
 /* ****************** product-page end******************** */
