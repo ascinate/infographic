@@ -111,20 +111,20 @@ function page() {
                                         <h4>Background</h4>
                                         <ul>
                                             <li className='form-check'>
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+                                                <label className="form-check-label" for="flexRadioDefault1">
                                                     Hidden
                                                 </label>
                                             </li>
                                             <li className='form-check'>
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+                                                <label className="form-check-label" for="flexRadioDefault1">
                                                     Simple
                                                 </label>
                                             </li>
                                             <li className='form-check'>
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+                                                <label className="form-check-label" for="flexRadioDefault1">
                                                     Detailed
                                                 </label>
                                             </li>
@@ -135,7 +135,7 @@ function page() {
                                         <h4>Layers</h4>
                                         <ul>
                                             <li className='form-check layer'>
-                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                <label className="form-check-label" for="flexRadioDefault1">
                                                     <button className='btn' onClick={() => setLayerOne(!layerOne)}>
                                                         Character 1
                                                     </button>
@@ -143,7 +143,7 @@ function page() {
                                            
                                             </li>
                                             <li className='form-check layer'>
-                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                <label className="form-check-label" for="flexRadioDefault1">
                                                     <button className='btn' onClick={() => setLayerTwo(!layerTwo)}>
                                                         Character 2
                                                     </button>
@@ -151,7 +151,7 @@ function page() {
                                           
                                             </li>
                                             <li className='form-check layer'>
-                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                <label className="form-check-label" for="flexRadioDefault1">
                                                     <button className='btn' onClick={() => setLayerThree(!layerThree)}>
                                                         Character 3
                                                     </button>

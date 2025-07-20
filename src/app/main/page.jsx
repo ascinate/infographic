@@ -13,15 +13,12 @@ export default function Home() {
 
   //state 
   const [svgColor, setSvgColor] = useState('#576FF8');
-
   const [selectedSVG, setSelectedSVG] = useState(null);
-  const [selectSize, setSelectSize] = useState("64px")
-  const [searchTerm, setSearchTerm] = useState('');
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
+  // const [selectSize, setSelectSize] = useState("64px")
+
+
+
   const svgRef = useRef(null);
-
-
   const coloredSvgList = svgList(svgColor);
 
   //demo data
@@ -53,66 +50,66 @@ export default function Home() {
 
 
   //download buttons functionality
-  const downloadSVG = () => {
-    if (!svgRef.current) return;
+  // const downloadSVG = () => {
+  //   if (!svgRef.current) return;
 
-    const svgElement = svgRef.current.querySelector('svg');
-    const clonedSvg = svgElement.cloneNode(true);
-    const size = parseInt(selectSize); // e.g. "32px" → 32
+  //   const svgElement = svgRef.current.querySelector('svg');
+  //   const clonedSvg = svgElement.cloneNode(true);
+  //   const size = parseInt(selectSize); // e.g. "32px" → 32
 
-    // Set new width & height
-    clonedSvg.setAttribute('width', size);
-    clonedSvg.setAttribute('height', size);
+  //   // Set new width & height
+  //   clonedSvg.setAttribute('width', size);
+  //   clonedSvg.setAttribute('height', size);
 
-    const svgData = new XMLSerializer().serializeToString(clonedSvg);
-    const blob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `image-${size}px.svg`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-  };
+  //   const svgData = new XMLSerializer().serializeToString(clonedSvg);
+  //   const blob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+  //   const url = URL.createObjectURL(blob);
+  //   const link = document.createElement('a');
+  //   link.href = url;
+  //   link.download = `image-${size}px.svg`;
+  //   document.body.appendChild(link);
+  //   link.click();
+  //   document.body.removeChild(link);
+  //   URL.revokeObjectURL(url);
+  // };
 
-  const downloadPNG = () => {
-    if (!svgRef.current) return;
+  // const downloadPNG = () => {
+  //   if (!svgRef.current) return;
 
-    const svgElement = svgRef.current.querySelector('svg');
-    const clonedSvg = svgElement.cloneNode(true);
-    const size = parseInt(selectSize); // Convert "64px" to 64
+  //   const svgElement = svgRef.current.querySelector('svg');
+  //   const clonedSvg = svgElement.cloneNode(true);
+  //   const size = parseInt(selectSize); // Convert "64px" to 64
 
-    // Apply size
-    clonedSvg.setAttribute('width', size);
-    clonedSvg.setAttribute('height', size);
+  //   // Apply size
+  //   clonedSvg.setAttribute('width', size);
+  //   clonedSvg.setAttribute('height', size);
 
-    const svgData = new XMLSerializer().serializeToString(clonedSvg);
-    const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
-    const url = URL.createObjectURL(svgBlob);
-    const img = new Image();
+  //   const svgData = new XMLSerializer().serializeToString(clonedSvg);
+  //   const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+  //   const url = URL.createObjectURL(svgBlob);
+  //   const img = new Image();
 
-    img.onload = () => {
-      const canvas = document.createElement('canvas');
-      canvas.width = size;
-      canvas.height = size;
-      const ctx = canvas.getContext('2d');
+  //   img.onload = () => {
+  //     const canvas = document.createElement('canvas');
+  //     canvas.width = size;
+  //     canvas.height = size;
+  //     const ctx = canvas.getContext('2d');
 
-      ctx.clearRect(0, 0, size, size);
-      ctx.drawImage(img, 0, 0, size, size);
+  //     ctx.clearRect(0, 0, size, size);
+  //     ctx.drawImage(img, 0, 0, size, size);
 
-      const pngUrl = canvas.toDataURL('image/png');
-      const link = document.createElement('a');
-      link.href = pngUrl;
-      link.download = `image-${size}px.png`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      URL.revokeObjectURL(url);
-    };
+  //     const pngUrl = canvas.toDataURL('image/png');
+  //     const link = document.createElement('a');
+  //     link.href = pngUrl;
+  //     link.download = `image-${size}px.png`;
+  //     document.body.appendChild(link);
+  //     link.click();
+  //     document.body.removeChild(link);
+  //     URL.revokeObjectURL(url);
+  //   };
 
-    img.src = url;
-  };
+  //   img.src = url;
+  // };
 
 
   return (
@@ -127,7 +124,7 @@ export default function Home() {
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav ms-auto mb-2 mb-lg-0 ">
-                <li className="nav-item me-3">
+                {/* <li className="nav-item me-3">
                   <input
                     type="text"
                     className="form-control"
@@ -138,7 +135,7 @@ export default function Home() {
                       setCurrentPage(1);
                     }}
                   />
-                </li>
+                </li> */}
                 <li className="nav-item">
                   <input
                     type="color"
@@ -155,22 +152,29 @@ export default function Home() {
       </header>
       {/* Main Content */}
       <main>
-        <div className="title text-center mt-5">
+        {/* <div className="title text-center mt-5">
           <h1>Illustrations</h1>
           <p>Browse to find the images that fit your needs and click to download. Use <br /> the on-the-fly color image generation to match your brand identity.</p>
 
           <button className='btn main-btn'>▶️ New update: Videos are available on logo+!</button>
-        </div>
-        <div className="container py-4">
+        </div> */}
+        <div className="container py-4 my-5">
           <div className="row justify-content-center">
             {coloredSvgList.map((item) => (
               <div className="col-lg-2 col-md-3 col-sm-4 col-6 mb-4 ms-4" key={item.id}>
-                <Link href={`/product/${item.id}`} className="text-decoration-none text-dark">
+                <Link
+                  href={{
+                    pathname: `/product/${item.id}`,
+                    query: { color: svgColor }
+                  }}
+                  className="text-decoration-none text-dark"
+                >
                   <div className="svg-card p-2 border rounded text-center">
                     <div>{item.getSvg()}</div>
                     <p className="mt-3">{item.name}</p>
                   </div>
                 </Link>
+
               </div>
             ))}
           </div>
@@ -205,7 +209,7 @@ export default function Home() {
               ) : (
                 <p>Select an SVG to view</p>
               )}
-
+              {/* 
               <select className="form-select w-75 m-auto" aria-label="Default select example" value={selectSize} onChange={(e) => setSelectSize(e.target.value)}>
                 <option selected>select size</option>
                 <option value="16px">16px</option>
@@ -215,12 +219,12 @@ export default function Home() {
                 <option value="128px">128px</option>
                 <option value="256px">256px</option>
                 <option value="512px">512px</option>
-              </select>
+              </select> */}
 
-              <div className="mt-3">
+              {/* <div className="mt-3">
                 <button className="btn btn-primary me-2" onClick={downloadPNG}>Download PNG</button>
                 <button className="btn btn-secondary" onClick={downloadSVG}>Download SVG</button>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

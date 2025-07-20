@@ -419,4 +419,7 @@ border: 1px solid lightgray;
 height: 300px;
 width: 300px;
 }
+.color-input{
+  width: 100px !important;
+}
 /* ****************** product-page end******************** */
