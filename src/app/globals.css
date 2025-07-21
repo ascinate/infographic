@@ -350,7 +350,7 @@ a {
 }
 
 
-.badge-product{
+.badge-product {
   border-radius: 30%;
   padding: 2px 8px;
   border: 1px solid rgb(228, 228, 228);
@@ -358,12 +358,13 @@ a {
 
 
 
-.right-toolbar{
+.right-toolbar {
   padding: 20px;
   border-radius: 6px;
   border: 2px solid #e5e7eb;
 }
-.layer{
+
+.layer {
   width: 70% !important;
   margin-top: 10px;
   font-weight: 600;
@@ -371,31 +372,32 @@ a {
   width: 50%;
   border-radius: 6px;
   background-color: #e5e7eb;
+
   & img {
     margin-left: 10px;
   }
 }
 
-.color-picker{
+.color-picker {
   width: 30px;
   height: 30px;
   border-radius: 50%;
   margin-left: 10px;
 }
 
-.simmler-infographic{
+.simmler-infographic {
   padding: 30px;
   border-radius: 6px;
-border: 1px solid lightgray;
+  border: 1px solid lightgray;
 }
 
 
-.learsmore{
+.learsmore {
   text-decoration: underline;
   color: green;
 }
 
-.button-a{
+.button-a {
   background-color: #0e8f2a;
   border: none;
   color: #ffffff;
@@ -406,20 +408,40 @@ border: 1px solid lightgray;
 
 
 
-.layers-section > layer{
-}
+.layers-section>layer {}
 
 
 
-.product-colorinput{
+.product-colorinput {
   width: 100px !important;
 }
 
-.product-page-svg svg{
-height: 300px;
-width: 300px;
+.product-page-svg svg {
+  height: 300px;
+  width: 300px;
 }
-.color-input{
+
+.color-input {
   width: 100px !important;
 }
+
+.select-size {
+  width: 50%;
+  border: 1px solid #cdcdcd;
+  padding: 8px 18px;
+  border-radius: 8px;
+  margin-block: 18px;
+}
+
+.card-styleSection{
+  border: 1px solid #cdcdcd;
+  min-height: 100px ;
+  min-width: 100px;
+  border-radius: 8px;
+  & svg{
+    width: 80%;
+    height: 80px;
+  }
+}
+
 /* ****************** product-page end******************** */

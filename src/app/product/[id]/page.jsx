@@ -3,6 +3,7 @@ import { useSearchParams, useParams } from 'next/navigation';
 import { svgList } from '@/app/demodata';
 import { useState, useEffect, useRef } from 'react';
 import html2canvas from 'html2canvas';
+import { svgStyleList } from '../../demoAPI/styleSvgAPI';
 
 
 
@@ -263,9 +264,12 @@ export default function ProductPage() {
         </g>
       </g>
     </svg>
-
   )
 
+
+
+
+  const [downloadSize, setDownloadSize] = useState('');
 
   const [svgColor, setSvgColor] = useState(initialColor);
   const [layerVisibility, setLayerVisibility] = useState({
@@ -273,6 +277,8 @@ export default function ProductPage() {
     layer2: true,
     layer3: true,
   });
+  const svgStyles = svgStyleList(svgColor);
+
   const [availableLayers, setAvailableLayers] = useState([]);
   useEffect(() => {
     if (svgRef.current) {
@@ -316,65 +322,91 @@ export default function ProductPage() {
 
 
 
-const handleDownloadPng = async () => {
-  const node = svgRef.current;
-  if (!node) return;
+  const handleDownloadPng = async () => {
+    const node = svgRef.current;
+    if (!node) return;
 
-  // 🔻 Temporarily hide <h2>
-  const textElement = node.querySelector('h2');
-  const originalDisplay = textElement?.style.display;
-  if (textElement) textElement.style.display = 'none';
+    const textElement = node.querySelector('h2');
+    const originalDisplay = textElement?.style.display;
+    if (textElement) textElement.style.display = 'none';
 
-  const canvas = await html2canvas(node, {
-    backgroundColor: null,
-    useCORS: true,
-    allowTaint: true,
-    scale: 2,
-  });
+    const canvas = await html2canvas(node, {
+      backgroundColor: null,
+      useCORS: true,
+      allowTaint: true,
+      scale: 2,
+    });
 
-  // 🔼 Show <h2> back
-  if (textElement) textElement.style.display = originalDisplay || 'block';
+    if (textElement) textElement.style.display = originalDisplay || 'block';
 
-  const link = document.createElement('a');
-  link.download = 'image.png';
-  link.href = canvas.toDataURL('image/png');
-  link.click();
-};
+    let width = canvas.width;
+    let height = canvas.height;
 
-const handleDownloadSvg = () => {
-  const svgElement = svgRef.current.querySelector('svg');
-  if (!svgElement) return;
+    // Resize based on dropdown
+    if (downloadSize) {
+      const size = parseInt(downloadSize);
+      const ratio = canvas.width / canvas.height;
+      width = size;
+      height = size / ratio;
+    }
 
-  const svgData = new XMLSerializer().serializeToString(svgElement);
-  const blob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
-  const url = URL.createObjectURL(blob);
+    const resizedCanvas = document.createElement('canvas');
+    resizedCanvas.width = width;
+    resizedCanvas.height = height;
 
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = 'image.svg';
-  link.click();
+    const ctx = resizedCanvas.getContext('2d');
+    ctx.drawImage(canvas, 0, 0, width, height);
 
-  URL.revokeObjectURL(url);
-};
+    const link = document.createElement('a');
+    link.download = `image-${downloadSize || 'original'}.png`;
+    link.href = resizedCanvas.toDataURL('image/png');
+    link.click();
+  };
+
+
+  const handleDownloadSvg = () => {
+    const svgElement = svgRef.current.querySelector('svg');
+    if (!svgElement) return;
+
+    const clone = svgElement.cloneNode(true);
+
+    if (downloadSize) {
+      clone.setAttribute('width', `${downloadSize}px`);
+      clone.setAttribute('height', `${downloadSize}px`);
+    }
+
+    const svgData = new XMLSerializer().serializeToString(clone);
+    const blob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `image-${downloadSize || 'original'}.svg`;
+    link.click();
+
+    URL.revokeObjectURL(url);
+  };
 
   return (
-    <main className="text-center my-5">
+    <main className=" my-5">
       <div className="container">
         <div className="row">
-          <div className="col-lg-8">
+
+          {/* left toolbar */}
+          <div className="col-lg-8 ">
             {/* <div className="product-page-svg canvas-editor" ref={svgRef}>
               {svgItem?.getSvg()}
               <h2>{svgItem?.name}</h2>
             </div> */}
             <div className='canvas-editor'>
               <div
-                className="product-page-svg "
+                className="product-page-svg w-100 text-center"
                 ref={svgRef}
                 style={{
                   position: 'relative',
                   display: 'inline-block',
-                  margin: '0 auto',         // center horizontally if using block
-                  textAlign: 'center',      // align inner content
+                  margin: '0 auto',
+                  textAlign: 'center',
                 }}
               >
                 {/* Background Layer */}
@@ -415,11 +447,32 @@ const handleDownloadSvg = () => {
                   <h2>{svgItem?.name}</h2>
                 </div>
               </div>
+
+
+
+              <div className='row gap-4 justify-content-center'>
+                <h3 className='my-3'>Style</h3>
+
+                {svgStyles.slice(0, 5).map((styleItem) => (
+                  <>
+                    <div className="col-lg-2 col-md-3 col-sm-4 mb-3 text-center" key={styleItem.id}>
+                      <div className='card-styleSection p-2 text-center'>
+                        {styleItem.getSvg()}
+                      </div>
+                      <p className='mt-2'>{styleItem.name}</p>
+                    </div>
+                  </>
+                ))}
+              </div>
+
+
+
             </div>
 
 
 
           </div>
+          {/* right toolbar */}
           <div className="col-lg-4">
             <div className="right-toolbar">
               <h4>Color</h4>
@@ -432,12 +485,13 @@ const handleDownloadSvg = () => {
 
 
               <h4>Layers</h4>
-              <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+              <div>
                 {availableLayers.map((layer) => (
                   <button
                     key={layer}
                     onClick={() => toggleLayer(layer)}
                     style={{
+                      width: `70%`,
                       padding: '6px 12px',
                       borderRadius: '6px',
                       border: '1px solid #ccc',
@@ -472,12 +526,34 @@ const handleDownloadSvg = () => {
 
               <div className="download">
 
-                <button className="btn btn-primary" onClick={handleDownloadPng}>Download PNG</button>
-                <button className="btn btn-primary" onClick={handleDownloadSvg}>Download SVG</button>
+                <select
+                  name="size"
+                  id="size"
+                  className='select-size'
+                  value={downloadSize}
+                  onChange={(e) => setDownloadSize(e.target.value)}
+                >
+                  <option value="">Select size</option>
+                  <option value="16">16px</option>
+                  <option value="24">24px</option>
+                  <option value="32">32px</option>
+                  <option value="64">64px</option>
+                  <option value="128">128px</option>
+                  <option value="256">256px</option>
+                  <option value="512">512px</option>
+                </select>
+                <div>
+                  <button className="btn btn-primary me-2" onClick={handleDownloadPng}>Download PNG</button>
+                  <button className="btn btn-primary" onClick={handleDownloadSvg}>Download SVG</button>
+                </div>
               </div>
 
 
-
+              <div class="mt-5">
+                <h6>License</h6>
+                <p>Free for personal and commercal. use with attribution. <a class="learsmore" href="#">Lears more</a>
+                </p>
+              </div>
             </div>
 
           </div>
