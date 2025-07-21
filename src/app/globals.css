@@ -444,4 +444,31 @@ a {
   }
 }
 
+
+
+.more-like-this-section{
+  border: 2px solid #cdcdcd;
+  border-radius: 8px;
+}
+.more-like-this-card{
+  border: 1px solid #cdcdcd;
+  min-height: 200px;
+}
+
+.similarSvg-card{
+  & svg {
+    margin: auto;
+    width: 100%;
+  }
+}
+
+
+.detail-badge{
+    border: 1px solid #bec7f7;
+    color: #576ff8;
+    width: 80px;
+    height: 29px;
+    border-radius: 25px;
+    text-align: center;
+}
 /* ****************** product-page end******************** */

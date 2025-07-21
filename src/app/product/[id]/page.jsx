@@ -4,11 +4,13 @@ import { svgList } from '@/app/demodata';
 import { useState, useEffect, useRef } from 'react';
 import html2canvas from 'html2canvas';
 import { svgStyleList } from '../../demoAPI/styleSvgAPI';
+import { similarSvgList } from '../../demoAPI/moreLikeThisAPI'
+import Link from 'next/link';
 
 
 
 export default function ProductPage() {
-  const params = useParams(); // ✅ CORRECT
+  const params = useParams();
   const searchParams = useSearchParams();
   const id = params.id;
 
@@ -278,6 +280,7 @@ export default function ProductPage() {
     layer3: true,
   });
   const svgStyles = svgStyleList(svgColor);
+  const similarSvg = similarSvgList(svgColor);
 
   const [availableLayers, setAvailableLayers] = useState([]);
   useEffect(() => {
@@ -454,15 +457,19 @@ export default function ProductPage() {
                 <h3 className='my-3'>Style</h3>
 
                 {svgStyles.slice(0, 5).map((styleItem) => (
-                  <>
-                    <div className="col-lg-2 col-md-3 col-sm-4 mb-3 text-center" key={styleItem.id}>
+                  <div className="col-lg-2 col-md-3 col-sm-4 mb-3 text-center" key={styleItem.id}>
+                    <Link
+                      href={`/product/${styleItem.id}?color=${encodeURIComponent(svgColor)}`}
+                      className="text-decoration-none text-dark"
+                    >
                       <div className='card-styleSection p-2 text-center'>
                         {styleItem.getSvg()}
                       </div>
                       <p className='mt-2'>{styleItem.name}</p>
-                    </div>
-                  </>
+                    </Link>
+                  </div>
                 ))}
+
               </div>
 
 
@@ -554,6 +561,29 @@ export default function ProductPage() {
                 <p>Free for personal and commercal. use with attribution. <a class="learsmore" href="#">Lears more</a>
                 </p>
               </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div className="row my-5">
+          <h2>You may also like</h2>
+
+          <div className='col-lg-12 more-like-this-section p-3'>
+            <div className="row">
+              {similarSvg.slice(0, 8).map((styleItem) => (
+                <div className="col-lg-3 col-md-3 col-sm-4 mb-3 text-center " key={styleItem.id}>
+                  <Link
+                    href={`/product/${styleItem.id}?color=${encodeURIComponent(svgColor)}`}
+                    className="text-decoration-none text-dark"
+                  >
+                    <div className='card more-like-this-card similarSvg-card p-2 text-center'>
+                      {styleItem.getSvg()}
+                    </div>
+
+                  </Link>
+                </div>
+              ))}
             </div>
 
           </div>
