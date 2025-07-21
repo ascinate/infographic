@@ -14,10 +14,9 @@ function page() {
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
-
             </div>
           </div>
-
+          
         </nav>
       </header>
 
@@ -449,7 +448,7 @@ function page() {
                   </div>
 
                 </div>
-                <button className='btn main-btn browse-now-btn w-100 mt-4'>Custirnize Now</button>
+                <Link href='/product/6?color=%23576FF8' className='btn main-btn browse-now-btn w-100 mt-4'>Custirnize Now</Link>
 
               </div>
             </div>
