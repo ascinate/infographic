@@ -15,12 +15,13 @@ export default function Home() {
   const [svgColor, setSvgColor] = useState('#576FF8');
   const [selectedSVG, setSelectedSVG] = useState(null);
   // const [selectSize, setSelectSize] = useState("64px")
-
-
+const [searchTerm, setSearchTerm] = useState('');
 
   const svgRef = useRef(null);
   const coloredSvgList = svgList(svgColor);
-
+const filteredSvgList = coloredSvgList.filter(item =>
+  item.name.toLowerCase().includes(searchTerm.toLowerCase())
+);
   //demo data
 
 
@@ -124,18 +125,19 @@ export default function Home() {
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav ms-auto mb-2 mb-lg-0 ">
-                {/* <li className="nav-item me-3">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Search"
-                    value={searchTerm}
-                    onChange={(e) => {
-                      setSearchTerm(e.target.value);
-                      setCurrentPage(1);
-                    }}
-                  />
-                </li> */}
+             <li className="nav-item me-3">
+  <input
+    type="text"
+    className="form-control"
+    placeholder="Search"
+    value={searchTerm}
+    onChange={(e) => {
+      setSearchTerm(e.target.value);
+      setCurrentPage(1); // optional if you use pagination
+    }}
+  />
+</li>
+
                 <li className="nav-item">
                   <input
                     type="color"
@@ -159,25 +161,25 @@ export default function Home() {
           <button className='btn main-btn'>▶️ New update: Videos are available on logo+!</button>
         </div> */}
         <div className="container py-4 my-5">
-          <div className="row justify-content-center">
-            {coloredSvgList.map((item) => (
-              <div className="col-lg-2 col-md-3 col-sm-4 col-6 mb-4 ms-4" key={item.id}>
-                <Link
-                  href={{
-                    pathname: `/product/${item.id}`,
-                    query: { color: svgColor }
-                  }}
-                  className="text-decoration-none text-dark"
-                >
-                  <div className="svg-card p-2 border rounded text-center">
-                    <div>{item.getSvg()}</div>
-                    <p className="mt-3">{item.name}</p>
-                  </div>
-                </Link>
+    <div className="row justify-content-center">
+  {filteredSvgList.map((item) => (
+    <div className="col-lg-2 col-md-3 col-sm-4 col-6 mb-4 ms-4" key={item.id}>
+      <Link
+        href={{
+          pathname: `/product/${item.id}`,
+          query: { color: svgColor }
+        }}
+        className="text-decoration-none text-dark"
+      >
+        <div className="svg-card p-2 border rounded text-center">
+          <div>{item.getSvg()}</div>
+          <p className="mt-3">{item.name}</p>
+        </div>
+      </Link>
+    </div>
+  ))}
+</div>
 
-              </div>
-            ))}
-          </div>
 
           {/* pagination  */}
           {/* {totalPages > 1 && (
