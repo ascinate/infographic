@@ -23,12 +23,15 @@
   font-family: Arial, Helvetica, sans-serif;
 } */
 
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
+
 
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Sora", sans-serif;
 }
 
 li {
@@ -181,7 +184,7 @@ a {
 
 
 
-/* home page start */
+/*:::::::::::::::::::::home page start :::::::::::::::::::: */
 
 .hero {
   text-align: center;
@@ -210,13 +213,13 @@ a {
 }
 
 .hero-bg {
-  background-color: #faf6f0;
+  background-color: #fffdf9;
 }
 
 .browse-now-btn {
   margin: 0;
   width: 40%;
-  padding: 8px 15px !important;
+  padding: 12px 28px !important;
   background-color: #665df5;
   color: white;
   border: none;
@@ -324,10 +327,19 @@ a {
   font-weight: 500;
 }
 
+.how-browse-now-btn{
+  margin: 0;
+  width: 50%;
+  padding: 8px 15px !important;
+
+  color: white;
+  border: none;
+}
+
 /* how it work end */
 
 
-/* home page end */
+/* :::::::::::::: home page end :::::::::::::::::::::*/
 
 
 
@@ -403,14 +415,6 @@ a {
   color: #ffffff;
   padding: 8px 28px;
 }
-
-
-
-
-
-.layers-section>layer {}
-
-
 
 .product-colorinput {
   width: 100px !important;

@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from "../components/Footer"
 import { svgList } from "../demodata"
+import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 
 export default function Home() {
@@ -10,18 +11,24 @@ export default function Home() {
   useEffect(() => {
     import('bootstrap/dist/js/bootstrap.bundle.min.js');
   }, []);
+const searchParams = useSearchParams();
+  const pageCategory = searchParams.get('pageCategory'); // 👈 get category from URL
 
-  //state 
   const [svgColor, setSvgColor] = useState('#576FF8');
-  const [selectedSVG, setSelectedSVG] = useState(null);
-  // const [selectSize, setSelectSize] = useState("64px")
-const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
 
-  const svgRef = useRef(null);
   const coloredSvgList = svgList(svgColor);
-const filteredSvgList = coloredSvgList.filter(item =>
-  item.name.toLowerCase().includes(searchTerm.toLowerCase())
-);
+  
+  // Filter by category if exists
+  const filteredByCategory = pageCategory
+    ? coloredSvgList.filter(item => item.category === pageCategory)
+    : coloredSvgList;
+
+  // Apply search filter on top of category filter
+  const filteredSvgList = filteredByCategory.filter(item =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   //demo data
 
 
@@ -125,18 +132,18 @@ const filteredSvgList = coloredSvgList.filter(item =>
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav ms-auto mb-2 mb-lg-0 ">
-             <li className="nav-item me-3">
-  <input
-    type="text"
-    className="form-control"
-    placeholder="Search"
-    value={searchTerm}
-    onChange={(e) => {
-      setSearchTerm(e.target.value);
-      setCurrentPage(1); // optional if you use pagination
-    }}
-  />
-</li>
+                <li className="nav-item me-3">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Search"
+                    value={searchTerm}
+                    onChange={(e) => {
+                      setSearchTerm(e.target.value);
+                      setCurrentPage(1); // optional if you use pagination
+                    }}
+                  />
+                </li>
 
                 <li className="nav-item">
                   <input
@@ -160,77 +167,35 @@ const filteredSvgList = coloredSvgList.filter(item =>
 
           <button className='btn main-btn'>▶️ New update: Videos are available on logo+!</button>
         </div> */}
-        <div className="container py-4 my-5">
-    <div className="row justify-content-center">
-  {filteredSvgList.map((item) => (
-    <div className="col-lg-2 col-md-3 col-sm-4 col-6 mb-4 ms-4" key={item.id}>
-      <Link
-        href={{
-          pathname: `/product/${item.id}`,
-          query: { color: svgColor }
-        }}
-        className="text-decoration-none text-dark"
-      >
-        <div className="svg-card p-2 border rounded text-center">
-          <div>{item.getSvg()}</div>
-          <p className="mt-3">{item.name}</p>
-        </div>
-      </Link>
-    </div>
-  ))}
-</div>
-
-
-          {/* pagination  */}
-          {/* {totalPages > 1 && (
-            <div className='pagination d-flex justify-content-center align-items-center my-4'>
-              <button className='btn page-btn' onClick={handlePreviousPage}>Previous</button>
-              <p>page {currentPage} of {totalPages}</p>
-              <button className='btn page-btn' onClick={handleNextPage}>Next</button>
+ <div className="container py-4 my-5">
+        <div className="row justify-content-center">
+          {filteredSvgList.length > 0 ? (
+            filteredSvgList.map((item) => (
+              <div className="col-lg-2 col-md-3 col-sm-4 col-6 mb-4 ms-4" key={item.id}>
+                <Link
+                  href={{
+                    pathname: `/product/${item.id}`,
+                    query: { color: svgColor }
+                  }}
+                  className="text-decoration-none text-dark"
+                >
+                  <div className="svg-card p-2 border rounded text-center">
+                    <div>{item.getSvg()}</div>
+                    <p className="mt-3">{item.name}</p>
+                  </div>
+                </Link>
+              </div>
+            ))
+          ) : (
+            <div className="text-center mt-4">
+              <p>No results found</p>
             </div>
-          )} */}
+          )}
         </div>
+      </div>
       </main>
 
       <Footer />
-      {/* Modal */}
-      <div className="modal fade" id="exampleModalToggle" aria-hidden="true" tabIndex="-1">
-        <div className="modal-dialog modal-dialog-centered">
-          <div className="modal-content">
-            <div className="modal-header">
-              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div className="modal-body text-center ">
-              {selectedSVG ? (
-                <>
-                  <h5 className="mb-3">{selectedSVG.name}</h5>  {/* SVG name from object */}
-                  <div ref={svgRef} className="svg-shapes mb-4">
-                    {selectedSVG.svg}
-                  </div>
-                </>
-              ) : (
-                <p>Select an SVG to view</p>
-              )}
-              {/* 
-              <select className="form-select w-75 m-auto" aria-label="Default select example" value={selectSize} onChange={(e) => setSelectSize(e.target.value)}>
-                <option selected>select size</option>
-                <option value="16px">16px</option>
-                <option value="24px">24px</option>
-                <option value="32px">32px</option>
-                <option value="64px">64px</option>
-                <option value="128px">128px</option>
-                <option value="256px">256px</option>
-                <option value="512px">512px</option>
-              </select> */}
-
-              {/* <div className="mt-3">
-                <button className="btn btn-primary me-2" onClick={downloadPNG}>Download PNG</button>
-                <button className="btn btn-secondary" onClick={downloadSVG}>Download SVG</button>
-              </div> */}
-            </div>
-          </div>
-        </div>
-      </div>
     </>
   );
 }
