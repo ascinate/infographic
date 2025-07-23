@@ -411,10 +411,12 @@ function page() {
             <div className="row">
               {svgCardList.map((item) => (
                 <div className="col-lg-3 text-center" key={item.id}>
-                  <div className="card card-bg">
-                    {item.svg}
-                  </div>
-                  <h4 className="mt-3">{item.title}</h4>
+                  <Link href={`/main?page=1&category=${item.title}`}>
+                    <div className="card card-bg">
+                      {item.svg}
+                    </div>
+                    <h4 className="mt-3">{item.title}</h4>
+                  </Link>
                 </div>
               ))}
             </div>
@@ -471,6 +473,17 @@ function page() {
             </div>
           </div>
         </section>
+
+
+  <div className="container py-4 my-5">
+        <h2>Latest Infographic</h2>
+        <div className="row justify-content-center">
+
+          </div>
+        </div>
+
+
+
 
         <Footer />
       </main>
