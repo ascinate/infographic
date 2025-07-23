@@ -16,8 +16,7 @@ export default function Home() {
 
   const coloredSvgList = svgList(svgColor);
   
-  // 🧠 Optional: Log or debug the category
-  // console.log("Category from URL:", categoryParam);
+
 
   const filteredSvgList = coloredSvgList.filter(item => {
     const matchesSearch = item.name.toLowerCase().includes(searchTerm.toLowerCase());
@@ -45,7 +44,7 @@ export default function Home() {
                     value={searchTerm}
                     onChange={(e) => {
                       setSearchTerm(e.target.value);
-                      setCurrentPage(1); // optional if you use pagination
+                      setCurrentPage(1);
                     }}
                   />
                 </li>
@@ -91,10 +90,6 @@ export default function Home() {
           )}
         </div>
       </div>
-
-    
-
-
       <Footer />
     </>
   );

@@ -475,9 +475,9 @@ function page() {
         </section>
 
 
-  <div className="container py-4 my-5">
-        <h2>Latest Infographic</h2>
-        <div className="row justify-content-center">
+        <div className="container py-4 my-5">
+          <h2>Latest Infographic</h2>
+          <div className="row justify-content-center">
 
           </div>
         </div>
