@@ -4,7 +4,6 @@ function page() {
   return (
     <>
       <Suspense fallback={<div>Loading...</div>}>
-
         <DeatilPage />
       </Suspense>
     </>

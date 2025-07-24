@@ -14,7 +14,8 @@ export default function Home() {
     const [svgColor, setSvgColor] = useState('#576FF8');
     const [searchTerm, setSearchTerm] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 5;
+    const itemsPerPage = 12; // Show 12 items per page
+
     const coloredSvgList = svgList(svgColor);
 
     const filteredSvgList = coloredSvgList.filter(item => {
@@ -28,6 +29,7 @@ export default function Home() {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const currentItems = filteredSvgList.slice(startIndex, startIndex + itemsPerPage);
 
+    // Handlers
     const goToPreviousPage = () => {
         if (currentPage > 1) setCurrentPage(currentPage => currentPage - 1);
     };
@@ -38,44 +40,6 @@ export default function Home() {
 
     return (
         <>
-            {/* Navbar */}
-            <header>
-                <nav className="navbar navbar-expand-lg navbar-light nav-bg">
-                    <div className="container">
-                        <Link className="navbar-brand" href="/">Logo</Link>
-                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                            <span className="navbar-toggler-icon"></span>
-                        </button>
-                        <div className="collapse navbar-collapse" id="navbarNav">
-                            <ul className="navbar-nav ms-auto mb-2 mb-lg-0 ">
-                                <li className="nav-item me-3">
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        placeholder="Search"
-                                        value={searchTerm}
-                                        onChange={(e) => {
-                                            setSearchTerm(e.target.value);
-                                            setCurrentPage(1);
-                                        }}
-                                    />
-                                </li>
-
-                                <li className="nav-item">
-                                    <input
-                                        type="color"
-                                        className="form-control form-control-color"
-                                        value={svgColor}
-                                        onChange={(e) => setSvgColor(e.target.value)}
-                                        title="Choose color"
-                                    />
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-            </header>
-
             <div className="container py-4 my-5">
                 <div className="row justify-content-center">
                     {currentItems.length > 0 ? (
@@ -127,14 +91,3 @@ export default function Home() {
         </>
     );
 }
-
-
-
-
-
-
-
-
-
-
-
