@@ -152,7 +152,7 @@ export default function ProductPage() {
 
   return (
     <>
-      {/* <header>
+      <header>
         <nav className="navbar navbar-expand-lg navbar-light nav-bg">
           <div className="container">
             <Link href="/" className="navbar-brand">Ascinate</Link>
@@ -160,12 +160,10 @@ export default function ProductPage() {
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
-
             </div>
           </div>
-
         </nav>
-      </header> */}
+      </header>
 
 
 
@@ -174,10 +172,10 @@ export default function ProductPage() {
 
       <main className=" my-5">
         <div className="container">
-          <div className="row">
+          <div className="row mt-5">
 
             {/* left toolbar */}
-            <div className="col-lg-8 ">
+            <div className="col-lg-8 mt-5">
               {/* <div className="product-page-svg canvas-editor" ref={svgRef}>
               {svgItem?.getSvg()}
               <h2>{svgItem?.name}</h2>
@@ -265,7 +263,7 @@ export default function ProductPage() {
 
             </div>
             {/* right toolbar */}
-            <div className="col-lg-4">
+            <div className="col-lg-4 mt-5">
               <div className="right-toolbar">
                 <h4>Color</h4>
                 <input
@@ -348,9 +346,9 @@ export default function ProductPage() {
                   </div>
                 </div>
 
-                <div class="mt-5">
+                <div className="mt-5">
                   <h6>License</h6>
-                  <p>Free for personal and commercal. use with attribution. <a class="learsmore" href="#">Lears more</a>
+                  <p>Free for personal and commercal. use with attribution. <a className="learsmore" href="#">Lears more</a>
                   </p>
                 </div>
               </div>
