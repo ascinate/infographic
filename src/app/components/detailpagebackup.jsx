@@ -94,6 +94,7 @@ export default function Home() {
                     <button className='btn page-btn'>Next</button>
                 </div>
             </div>
+
             <Footer />
         </>
     );
