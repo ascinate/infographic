@@ -1,7 +1,8 @@
-import React from 'react'
+"use client"
+import React, { useState } from 'react'
 import Footer from './components/Footer'
 import Link from 'next/link'
-
+import { svgList } from "./demodata";
 
 function page() {
 
@@ -11,28 +12,28 @@ function page() {
       id: 1,
       title: "Technology",
       svg: (
-    <img src="/one-pic.png" alt="" className='featured-illustrations-card-img'/>
+        <img src="/one-pic.png" alt="" className='featured-illustrations-card-img' />
       )
     },
     {
       id: 2,
       title: "People",
       svg: (
-       <img src="/two-pic.png" alt="" className='featured-illustrations-card-img'/>
+        <img src="/two-pic.png" alt="" className='featured-illustrations-card-img' />
       )
     },
     {
       id: 3,
       title: "Abstract",
       svg: (
-         <img src="/three-pic.png" alt="" className='featured-illustrations-card-img'/>
+        <img src="/three-pic.png" alt="" className='featured-illustrations-card-img' />
       )
     },
     {
       id: 4,
       title: "Business",
       svg: (
-        <img src="/four-pic.png" alt="" className='featured-illustrations-card-img'/>
+        <img src="/four-pic.png" alt="" className='featured-illustrations-card-img' />
 
       )
     }
@@ -46,9 +47,11 @@ function page() {
     { id: 3, name: "Abstract", className: "" },
     { id: 4, name: "Technology", className: "" }
   ];
+  const [svgColor, setSvgColor] = useState('#576FF8');
+  const allSvgItems = svgList(svgColor);
 
-
-
+  // Get only the latest 8 SVGs (assuming latest are at the end)
+  const latest8Svgs = allSvgItems.slice(-8).reverse();
   return (
     <>
       <header>
@@ -78,7 +81,7 @@ function page() {
               </div>
 
               <div className='col-lg-6 d-flex justify-content-center py-5'>
-          <img src="/hero-right.png" alt="" width={400}/>
+                <img src="/hero-right.png" alt="" width={400} />
               </div>
             </div>
 
@@ -123,8 +126,6 @@ function page() {
           </div>
         </section>
 
-
-
         <section className='how-work my-4'>
           <div className='container'>
             <div className="row my">
@@ -161,15 +162,26 @@ function page() {
 
 
         <div className="container py-4 my-5">
-          <h2>Latest Infographic</h2>
-          <div className="row justify-content-center">
-
+          <h2 className="mb-4">Latest Infographic</h2>
+          <div className="row  gy-4 gx-lg-5 mt-0">
+            {latest8Svgs.map((item) => (
+              <div key={item.id} className="col-lg-3 col-md-4 col-sm-6">
+                <Link
+                  href={{
+                    pathname: `/product/${item.id}`,
+                    query: { color: svgColor },
+                  }}
+                  className="latest-svg-card p-3 border rounded text-center d-inline-block w-100 "
+                >
+                  <div className="">
+                    <div>{item.getSvg()}</div>
+                    <p className="mt-4">{item.name}</p>
+                  </div>
+                </Link>
+              </div>
+            ))}
           </div>
         </div>
-
-
-
-
         <Footer />
       </main>
     </>
