@@ -213,7 +213,9 @@ a {
 }
 
 .hero-bg {
-  background-color: #fffdf9;
+  background: url("/hero.jpg");
+  background-size: fit;
+  background-repeat: no-repeat;
 }
 
 .browse-now-btn {
@@ -334,6 +336,11 @@ a {
 
   color: white;
   border: none;
+}
+
+.featured-illustrations-card-img{
+  margin: auto;
+  width: 120px;
 }
 
 /* how it work end */
