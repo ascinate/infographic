@@ -57,12 +57,34 @@ function page() {
       <header>
         <nav className="navbar navbar-expand-lg navbar-light nav-bg">
           <div className="container">
-            <a className="navbar-brand" href="#">Ascinate</a>
+            <Link className="navbar-brand" href="/">Logo</Link>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
               <span className="navbar-toggler-icon"></span>
             </button>
-
             <div className="collapse navbar-collapse" id="navbarNav">
+              <ul className="navbar-nav ms-auto mb-2 mb-lg-0 navLink d-flex align-items-center">
+                {svgCardList.map((item) => (
+                  <li className="me-5" key={item.id}>
+                    <Link className='' href={`/main?page=1&category=${item.title}`}>
+                      {item.title}
+                    </Link>
+                  </li>
+                ))}
+
+                <li className='me-5'>
+                  <span>More</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 15.0006L7.75732 10.758L9.17154 9.34375L12 12.1722L14.8284 9.34375L16.2426 10.758L12 15.0006Z"></path></svg>
+                   </li>
+                <li className="nav-item">
+                  <input
+                    type="color"
+                    className="form-control form-control-color"
+                    value={svgColor}
+                    onChange={(e) => setSvgColor(e.target.value)}
+                    title="Choose color"
+                  />
+                </li>
+              </ul>
             </div>
           </div>
         </nav>

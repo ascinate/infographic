@@ -60,6 +60,12 @@ a {
   z-index: 1000;
 }
 
+
+.navLink li:hover{
+  color: var(--theme-color);
+  cursor: pointer;
+}
+
 .svg-card {
   margin-top: 1rem;
   width: 188px;
@@ -229,9 +235,9 @@ a {
 }
 
 .outline-btn {
-  border: 1px solid #e3e3e3;
+  border: 1px solid #e3e3e3 !important;
   background-color: #fefefd;
-  color: black;
+  color: black !important;
   margin-left: 18px;
 }
 
@@ -337,7 +343,7 @@ a {
   width: 50%;
   padding: 8px 15px !important;
 
-  color: white;
+  color: black !important;
   border: none;
 }
 
