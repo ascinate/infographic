@@ -14,7 +14,7 @@ export default function Home() {
     const [svgColor, setSvgColor] = useState('#576FF8');
     const [searchTerm, setSearchTerm] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 5;
+    const itemsPerPage = 50;
     const coloredSvgList = svgList(svgColor);
 
     const filteredSvgList = coloredSvgList.filter(item => {
