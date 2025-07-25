@@ -570,5 +570,9 @@ scale: 1.1;
   text-align: center;
 }
 
-
+.showmore-btn{
+    background: none;
+    border: none;
+    color: gray;
+}
 /* ****************** product-page end******************** */

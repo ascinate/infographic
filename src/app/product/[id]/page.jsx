@@ -32,6 +32,7 @@ export default function ProductPage() {
 
 
   const [downloadSize, setDownloadSize] = useState('');
+const [showAll, setShowAll] = useState(false);
 
   const [svgColor, setSvgColor] = useState(initialColor);
   const [layerVisibility, setLayerVisibility] = useState({
@@ -66,7 +67,7 @@ export default function ProductPage() {
   }, [availableLayers]);
 
 
-
+const visibleLayers = showAll ? availableLayers : availableLayers.slice(0, 3);
   const svgRef = useRef();
 
   useEffect(() => {
@@ -274,27 +275,44 @@ export default function ProductPage() {
                 />
 
 
-                <h4>Layers</h4>
-                <div>
-                  {availableLayers.map((layer) => (
-                    <button
-                      key={layer}
-                      onClick={() => toggleLayer(layer)}
-                      style={{
-                        width: `70%`,
-                        padding: '6px 12px',
-                        borderRadius: '6px',
-                        border: '1px solid #ccc',
-                        backgroundColor: layerVisibility[layer] ? '#4CAF50' : '#f0f0f0',
-                        color: layerVisibility[layer] ? 'white' : 'black',
-                        cursor: 'pointer',
-                      }}
-                    >
-                      {layer}
-                    </button>
-                  ))}
-                </div>
-                <h4>Background</h4>
+                
+<div>
+      <h4>Layers</h4>
+      <div>
+        {visibleLayers.map((layer) => (
+          <button
+            key={layer}
+            onClick={() => toggleLayer(layer)}
+            style={{
+              width: `70%`,
+              padding: '6px 12px',
+              borderRadius: '6px',
+              border: '1px solid #ccc',
+              backgroundColor: layerVisibility[layer] ? '#4CAF50' : '#f0f0f0',
+              color: layerVisibility[layer] ? 'white' : 'black',
+              cursor: 'pointer',
+              display: 'block',
+              marginBottom: '8px',
+            }}
+          >
+            {layer}
+          </button>
+        ))}
+
+        {availableLayers.length > 3 && (
+          <button
+          className='showmore-btn'
+            onClick={() => setShowAll(!showAll)}
+          >
+            {showAll ? 'Show Less' : 'Show More'}
+          </button>
+        )}
+      </div>
+    </div>
+
+
+
+                <h4 className='mt-5'>Background</h4>
                 <div>
                   {['hidden', 'simple', 'detail'].map((type) => (
                     <div className="form-check" key={type}>
