@@ -42,11 +42,23 @@ function page() {
 
 
   const categoryList = [
-    { id: 1, name: "People", className: "cy" },
-    { id: 2, name: "Business", className: "cb" },
-    { id: 3, name: "Abstract", className: "" },
-    { id: 4, name: "Technology", className: "" }
+    { id: 1, icon: (
+      <svg width="24" height="24" viewBox="0 0 106 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 15C0 6.71573 6.71573 0 15 0H91C99.2843 0 106 6.71573 106 15V86C106 94.2843 99.2843 101 91 101H15C6.71573 101 0 94.2843 0 86V15Z" fill="#4D6EF5"/>
+<path d="M81.1045 76.7812V81.498H26.8613V76.7812H81.1045ZM84.25 73.6367V39.0469C84.25 37.3102 82.8412 35.9023 81.1045 35.9023H26.8613C25.1247 35.9024 23.7168 37.3102 23.7168 39.0469V73.6367C23.7168 75.3734 25.1247 76.7812 26.8613 76.7812V81.498C22.5196 81.498 19 77.9784 19 73.6367V39.0469C19 34.7052 22.5197 31.1856 26.8613 31.1855H81.1045C85.4462 31.1855 88.9668 34.7052 88.9668 39.0469V73.6367L88.9561 74.042C88.7453 78.1955 85.3104 81.498 81.1045 81.498V76.7812C82.8412 76.7812 84.25 75.3734 84.25 73.6367Z" fill="white"/>
+<path d="M22.9307 49.2666H86.6079V55.5557H22.9307V49.2666Z" fill="white"/>
+<path d="M34.7228 52.4111V44.5497H43.3703V52.4111H34.7228Z" fill="white"/>
+<path d="M63.8099 52.4111V44.5497H72.4575V52.4111H63.8099Z" fill="white"/>
+<path d="M68.92 26.8613C68.92 23.8222 66.4562 21.3585 63.4171 21.3584H44.1564C41.1172 21.3584 38.6535 23.8222 38.6534 26.8613V32.7578H33.9366V26.8613C33.9367 21.2171 38.5122 16.6416 44.1564 16.6416H63.4171C69.0612 16.6417 73.6368 21.2172 73.6368 26.8613V32.7578H68.92V26.8613Z" fill="white"/>
+</svg>
+
+    ), name: "People", className: "cy" },
+    { id: 2, icon: "ds", name: "Business", className: "cb" },
+    { id: 3, icon: "ddss", name: "Abstract", className: "" },
+    { id: 4, icon: "dsd", name: "Technology", className: "" }
   ];
+
+
   const [svgColor, setSvgColor] = useState('#576FF8');
   const allSvgItems = svgList(svgColor);
 
@@ -73,23 +85,14 @@ function page() {
 
                 <li className='me-5'>
                   <span>More</span>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 15.0006L7.75732 10.758L9.17154 9.34375L12 12.1722L14.8284 9.34375L16.2426 10.758L12 15.0006Z"></path></svg>
-                   </li>
-                <li className="nav-item">
-                  <input
-                    type="color"
-                    className="form-control form-control-color"
-                    value={svgColor}
-                    onChange={(e) => setSvgColor(e.target.value)}
-                    title="Choose color"
-                  />
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 15.0006L7.75732 10.758L9.17154 9.34375L12 12.1722L14.8284 9.34375L16.2426 10.758L12 15.0006Z"></path></svg>
                 </li>
+
               </ul>
             </div>
           </div>
         </nav>
       </header>
-
       <main>
         {/* hero secltion */}
         <section className="hero-bg title text-start">
@@ -101,19 +104,13 @@ function page() {
                 <Link href={"/main"} className='btn main-btn browse-now-btn'>Explore Illustrations</Link>
                 <Link href={"/main"} className='btn main-btn browse-now-btn outline-btn'>Learn How</Link>
               </div>
-
               <div className='col-lg-6 d-flex justify-content-center py-5'>
                 <img src="/hero-right.png" alt="" width={400} />
               </div>
             </div>
-
           </div>
-
         </section>
-
-
-
-
+        {/* Featured Illustrations */}
         <section className='featured-Illus'>
           <div className='container'>
             <h2 className='mt-5 mb-4'>Featured Illustrations</h2>
@@ -133,21 +130,21 @@ function page() {
 
           </div>
         </section>
-
+        {/* Categories */}
         <section className='Categories'>
           <div className='container'>
             <h2 className='mt-5 mb-4'>Categories</h2>
-            <div className="row p-tag">
+            <div className="row row-cols-1 row-cols-lg-4 p-tag">
               {categoryList.map((category) => (
                 <div className="col-lg-4 text-center" key={category.id}>
-                  <p className={`cat-bus ${category.className}`}>{category.name}</p>
+                  <p className={`cat-bus ${category.className}`}>{category.icon}{category.name}</p>
                 </div>
               ))}
             </div>
 
           </div>
         </section>
-
+        {/* How it Works */}
         <section className='how-work my-4'>
           <div className='container'>
             <div className="row my">
@@ -173,18 +170,31 @@ function page() {
                     <p className='home-badge customized-badge'>Customized</p>
                     <svg width="170" height="170" viewBox="0 0 800.138 456.243" className="injected-svg" role="img" artist="Katerina Limpitsouni" copyright="unDraw" scrapped="true" source="https://undraw.co/"><g transform="translate(-555.693 -376.005)"><circle cx="71.118" cy="71.118" r="71.118" transform="translate(555.693 376.005)" fill="#ff6884"></circle><path d="M128.286,279.236a.653.653,0,0,1-.369-.116L36.655,216.793a.817.817,0,0,1-.226-1.062.664.664,0,0,1,.965-.249l91.262,62.327a.817.817,0,0,1,.226,1.062.689.689,0,0,1-.6.364Z" transform="translate(568.941 229.357)" fill="#3f3d56"></path><path d="M681.324,342.866c-.287,0-.564-.246-.705-.676a1.675,1.675,0,0,1,.337-1.7L770.513,266.5c.391-.322.87-.084,1.073.532a1.675,1.675,0,0,1-.337,1.7l-89.558,73.992A.574.574,0,0,1,681.324,342.866Z" transform="translate(577.59 197.457)" fill="#3f3d56"></path><g transform="translate(825.596 486.43)"><path d="M279.456,314.567s-8.04,12.631-1.427,20.069,46.588,37.071,46.588,37.071,25.184,15.441,22.717-5.825-38.367-44.025-38.367-44.025l-29.511-7.29Z" transform="translate(-275.419 -281.114)" fill="#e6e6e6"></path><path d="M334.332,288.026c-4.3-.415-8.314,4.726-8.966,11.486a16.99,16.99,0,0,0,1.028,7.958l-.643,7.669-.132.013-8.954,35.215a27.069,27.069,0,0,0,4.889,23.562c3.136,3.927,6.829,6.324,10.19,2.783,5.577-5.876,5.4-34.594,4.812-51.015l1.848-17.068a16.989,16.989,0,0,0,2.532-7.616c.653-6.757-2.3-12.571-6.6-12.986Z" transform="translate(-264.947 -288.003)" fill="#ffb6b6"></path></g><path d="M303.083,310.146l-5.435,17.665-23.1-5.435-1.359-28.536Z" transform="translate(549.598 199.941)" fill="#ffb6b6"></path><path d="M274.383,313.262l29.894,2.718,11.978,11.7L332.813,341.8s9.512,13.588,6.794,31.253l16.306,13.588-40.765,41.792-51.636-43.151s-17.665-52.995,10.871-72.018Z" transform="translate(545.687 204.978)" fill="#e6e6e6"></path><path d="M333.3,380.862l11.866-1.359,19.259,1.359,63.273-37.679a17.06,17.06,0,0,1,23.172,5.579l50.926,81.018-16.306,10.871-50.277-51.636-62.7,51.636S308.836,473.958,303.4,421.3L333.3,380.862Z" transform="translate(557.434 212.114)" fill="#2f2e41"></path><path d="M358.43,421.286l101.913-9.512,88.935,17.26,12.977-13.183L430.448,368.292l-47.559,12.229Z" transform="translate(571.705 219.25)" fill="#2f2e41"></path><path d="M268.8,322.037s-9.351,11.694-3.576,19.8S307.557,383.7,307.557,383.7s23.378,18.058,23.212-3.35-33.413-47.894-33.413-47.894Z" transform="translate(547.044 207.254)" fill="#e6e6e6"></path><g transform="translate(785.618 447.716)"><ellipse cx="25.799" cy="25.799" rx="25.799" ry="25.799" transform="translate(33.34 11.625)" fill="#ffb6b6"></ellipse><path d="M326.6,290.252c-6.617-.016-6.992.028-8.062,0-8.207-.216-10.353-3.445-14.512-3.225-7.424.393,2.375,37.616,6.45,54.824,4,16.877-9.51,32-10.481,33.056-13.71,14.91-37.792,17.637-41.924,11.287-3.345-5.139,8.509-12.954,5.644-24.187-2.8-10.981-15.734-9.811-19.35-20.156-3.786-10.833,8.937-16.3,16.931-42.73,4.591-15.181,3.779-18.009,8.062-27.412,11.45-25.133,67.574-14.432,61.274,8.869-1.219,4.507,2.025,9.689-4.031,9.675Z" transform="translate(-243.674 -257.262)" fill="#2f2e41"></path></g><path d="M169.506,296.833c28.643,2.3,94.684,50.269,94.684,50.269C315.9,398.876,393.137,401.946,444.72,404c76.7,3.049,134.755-20.823,177.247-38.294,0,0,82.861-17.249,116.991-43.046.1-.324,3.754,4.318,5.077,4.219,1.583-.118-.2,7.455,0,8.046,3.278,9.692-50.893,57.778-92.526,70.169-5.672,1.688-18.539,5.05-31.729,15.318a81.175,81.175,0,0,0-14.224,14.224c-11.171,14.06-76.983,26.447-144.3,28.849-57.575,2.055-97.155,7.246-148.92-33.225-20.531-16.052-18.069-17.237-43.765-37.2-58.275-45.274-87.413-67.911-100.659-75.494-1.836-1.051-4.478-19.9-3.872-21.822C164.589,293.985,167.452,296.668,169.506,296.833Z" transform="translate(528.969 210.119)" fill="#378a00"></path><path d="M396.628,412.636c1.914-3.873-1.467-9.451-7.554-12.46a16.989,16.989,0,0,0-7.8-1.864l-6.941-3.324.035-.128L344.62,373.988a27.07,27.07,0,0,0-23.763-3.794c-4.785,1.538-8.337,4.139-6.219,8.539,3.514,7.3,30.423,17.33,45.984,22.61l15.3,7.787a16.99,16.99,0,0,0,6.221,5.071c6.085,3.009,12.57,2.309,14.485-1.564Z" transform="translate(560.186 219.42)" fill="#ffb6b6"></path><path d="M6.565,0H20.788a6.565,6.565,0,0,1,6.565,6.565V408.107a6.565,6.565,0,0,1-6.565,6.565H6.565A6.565,6.565,0,0,1,0,408.107V6.565A6.565,6.565,0,0,1,6.565,0Z" transform="translate(598.7 417.576)" fill="#f2f2f2"></path><path d="M6.565,0H20.788a6.565,6.565,0,0,1,6.565,6.565V408.107a6.565,6.565,0,0,1-6.565,6.565H6.565A6.565,6.565,0,0,1,0,408.107V6.565A6.565,6.565,0,0,1,6.565,0Z" transform="translate(1328.478 417.576)" fill="#f2f2f2"></path><g transform="translate(872.051 470.608) rotate(-21)"><path d="M9.7,0A9.7,9.7,0,1,1,0,9.7,9.7,9.7,0,0,1,9.7,0Z" transform="translate(16.563)" fill="#e6e6e6"></path><path d="M1.212,0H27.887A1.212,1.212,0,0,1,29.1,1.212L21.824,24.249a1.212,1.212,0,0,1-1.212,1.212H9.7a1.212,1.212,0,0,1-1.212-1.212L0,1.212A1.212,1.212,0,0,1,1.212,0Z" transform="translate(0 7.715)" fill="#378a00"></path><path d="M0,0H3.637V15.762H0Z" transform="translate(13.337 30.752)" fill="#378a00"></path><path d="M9.094,0c5.022,0,9.094.814,9.094,1.819S14.116,3.637,9.094,3.637,0,2.823,0,1.819,4.071,0,9.094,0Z" transform="translate(6.062 45.301)" fill="#378a00"></path></g></g></svg>
                   </div>
-
                 </div>
                 <Link href='/product/6?color=%23576FF8' className='btn main-btn browse-now-btn w-100 mt-4'>Custirnize Now</Link>
-
               </div>
             </div>
           </div>
         </section>
-
-
+        {/* Latest Infographic */}
         <div className="container py-4 my-5">
-          <h2 className="mb-4">Latest Infographic</h2>
+          <div className='d-flex align-items-center justify-content-between'>
+            <h2 className="mb-4">Latest Infographic</h2>
+            <div className='d-flex align-items-center justify-content-between '>
+              <p className='mb-0 me-3'>Change color</p>
+              <input
+                type="color"
+                className="form-control form-control-color color-circle"
+                value={svgColor}
+                onChange={(e) => setSvgColor(e.target.value)}
+                title="Choose color"
+              />
+            </div>
+
+
+
+          </div>
+
           <div className="row  gy-4 gx-lg-5 mt-0">
             {latest8Svgs.map((item) => (
               <div key={item.id} className="col-lg-3 col-md-4 col-sm-6">
@@ -205,8 +215,8 @@ function page() {
             ))}
           </div>
         </div>
-        <Footer />
       </main>
+      <Footer />
     </>
   )
 }

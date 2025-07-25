@@ -59,12 +59,18 @@ a {
   backdrop-filter: blur(10px);
   z-index: 1000;
 }
-
+.navLink a{
+font-size: 15;
+/* font-weight: 500; */
+color: #000000;
+}
 
 .navLink li:hover{
   color: var(--theme-color);
   cursor: pointer;
 }
+
+
 
 .svg-card {
   margin-top: 1rem;
@@ -241,11 +247,10 @@ a {
   margin-left: 18px;
 }
 
-
 .hero-left {
-
   & h1 {
     margin-bottom: 20px;
+    font-weight: 700;
   }
 
   & p {
@@ -264,6 +269,9 @@ a {
   }
 }
 
+.card-bg img{
+scale: 1.1;
+}
 
 .featured-Illus {
   & p {
