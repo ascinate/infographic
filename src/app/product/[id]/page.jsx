@@ -271,7 +271,7 @@ const visibleLayers = showAll ? availableLayers : availableLayers.slice(0, 3);
                   type="color"
                   value={svgColor}
                   onChange={(e) => setSvgColor(e.target.value)}
-                  className="form-control form-control-color w-auto mx-auto my-3 color-input"
+                  className="color-circle"
                 />
 
 

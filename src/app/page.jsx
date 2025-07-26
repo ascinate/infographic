@@ -186,15 +186,13 @@ function page() {
               <input
                 type="color"
                 id="colorInput"
-                className="form-control form-control-color color-circle"
+                className=" color-circle"
                 value={svgColor}
                 onChange={(e) => setSvgColor(e.target.value)}
                 title="Choose color"
               />
             </div>
-
-
-
+            
           </div>
 
           <div className="row  gy-4 gx-lg-5 mt-0">
@@ -217,7 +215,9 @@ function page() {
             ))}
           </div>
         </div>
+     
       </main>
+
       <Footer />
     </>
   )
