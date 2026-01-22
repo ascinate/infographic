@@ -1,37 +1,9 @@
-/* :root {
-  --background: #ffffff;
-  --foreground: #171717;
-} */
 
-/* @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-} */
-
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
-
-/* body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-} */
-
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
-
-
-
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Quicksand:wght@300..700&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap');
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Sora", sans-serif;
 }
 
 li {
@@ -42,10 +14,20 @@ a {
   text-decoration: none;
   color: inherit;
 }
-
+img{
+  max-width: 100%;
+}
 :root {
-  --primary-card: #f9fafb;
-  --theme-color: #4468f0;
+    --primary-card: #f9fafb;
+    --theme-color: #04ab98;
+    --textcolor: #243245;
+    --button-bg:#0c1118;
+}
+h1{
+  font-family: "Zalando Sans Expanded", sans-serif;
+}
+h2{
+  font-family: "Zalando Sans Expanded", sans-serif;
 }
 
 /* navbar start*/
@@ -164,6 +146,22 @@ color: #000000;
   animation: pulse .3s infinite;
 }
 
+.header-mains .navbar-light .navbar-nav .nav-link {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgb(72, 87, 108) !important;
+    padding: 0px 17px;
+    transition: 0.5s;
+}
+.header-mains {
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    background: #2432451c;
+    backdrop-filter: blur(25px);
+}
 /* Optional pulse animation */
 @keyframes pulse {
   0% {
@@ -204,6 +202,15 @@ color: #000000;
 
 /*:::::::::::::::::::::home page start :::::::::::::::::::: */
 
+.hero-left h1 {
+    color: var(--textcolor);
+    margin-bottom: 20px;
+    font-weight: 800;
+    font-size: 50px;
+    line-height: 55px;
+    text-transform: capitalize;
+}
+
 .hero {
   text-align: center;
 }
@@ -231,18 +238,24 @@ color: #000000;
 }
 
 .hero-bg {
-  background: url("/hero.jpg");
-  background-size: fit;
+  background: url("/bg-transferst.png");
+  background-size: cover;
   background-repeat: no-repeat;
+  min-height: 540px;
+  padding-top: 40px;
+
 }
 
 .browse-now-btn {
-  margin: 0;
-  width: 40%;
-  padding: 12px 28px !important;
-  background-color: #665df5;
-  color: white;
-  border: none;
+    background-color: var(--button-bg);
+    color: rgb(255, 255, 255);
+    margin: 0px;
+    padding: 12px 28px !important;
+    border-radius: 0.5rem;
+    font-size: 16px;
+    text-transform: capitalize;
+    font-weight: 600;
+
 }
 
 .outline-btn {
@@ -251,19 +264,52 @@ color: #000000;
   color: black !important;
   margin-left: 18px;
 }
-
+.how-itsworks {
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    padding: 12px 28px !important;
+    font-size: 16px;
+    text-transform: capitalize;
+    font-weight: 600;
+}
 .hero-left {
-  & h1 {
-    margin-bottom: 20px;
-    font-weight: 700;
-  }
 
   & p {
+    color: #515e70;
     margin-bottom: 35px;
-    color: gray;
+    font-size: 19px;
   }
 }
 
+.headings-div015 h2 {
+    color: var(--textcolor);
+    font-size: 37px;
+    font-weight: 800;
+}
+.featured-Illus p {
+    font-size: 18px !important;
+    font-weight: 700;
+    color: var(--button-bg);
+    text-transform: capitalize;
+}
+.features-div01 {
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.08);
+    border-image: initial;
+    border-radius: 0.5rem;
+    background: none !important;
+}
+.latest8Svgs-svg {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 210px;
+    display: flex;
+    background: rgb(250, 250, 250);
+}
 .card-bg {
   background-color: #f6f8fc;
   border: none;
@@ -280,7 +326,6 @@ scale: 1.1;
 
 .featured-Illus {
   & p {
-    font-size: 16px !important;
   }
 }
 
@@ -369,16 +414,11 @@ scale: 1.1;
 }
 
 
-
 .latest-svg-card {
-  margin-top: 1rem;
-  width: 188px;
-  height: 197px;
-  padding-block: 1.5rem;
-  background-color: #fffcf9;
-  border-radius: 8px !important;
-  border: 1px solid #f0ece9 !important;
-
+    border-radius: 0.7rem;
+    overflow: hidden;
+    border: solid 1px #bbbbbb54;
+    transition: all 0.5s;
   & p {
     margin: 0px;
   }
@@ -387,6 +427,34 @@ scale: 1.1;
     width: 100px;
     height: 100px;
   }
+}
+.card-text015 {
+    padding: 23px 16px 16px 22px;
+}
+.latest-svg-card h6 {
+    font-size: 14px;
+    color: #bbb;
+    margin-top: 15px;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+
+}
+.latest-svg-card h6 svg {
+   width: 18px;
+   height: 18px;
+   margin-right: 8px;
+}
+.categs-ites{
+    color: #065f53;
+    background-color: #e6fffa;
+    border-radius: 999px;
+    width: fit-content;
+    margin-bottom: 3px;
+    padding: 7px 13px;
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-flex;
 }
 .latest-svg-card:hover{
   scale: 1.1;
